@@ -77,33 +77,22 @@
       <div class="row">
         <div class="col-md-8 col-lg-9">
           <h1>Blog</h1>
-          <!-- blog post -->
-          <div class="card mb-4">
-            <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
-            <div class="card-body">
-              <h2 class="card-title">Post Title</h2>
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
-              <a href="#" class="btn btn-primary">Read More &rarr;</a>
-            </div>
-            <div class="card-footer text-muted">
-              Posted on January 1, 2020 by
-              <a href="#">Start Bootstrap</a>
-            </div>
-          </div>
-          <!-- Blog Post -->
-          <div class="card mb-4">
-            <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
-            <div class="card-body">
-              <h2 class="card-title">Post Title</h2>
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
-              <a href="#" class="btn btn-primary">Read More &rarr;</a>
-            </div>
-            <div class="card-footer text-muted">
-              Posted on January 1, 2020 by
-              <a href="#">Start Bootstrap</a>
-            </div>
-          </div>
 
+          {% for p in post_list %}
+          <!-- Blog post -->
+          <div class="card mb-4">
+            <img class="card-img-top" src="{{ p.head_image.url }}" alt="Card image cap">
+            <div class="card-body">
+              <h2 class="card-title">{{ p.title }}</h2>
+              <p class="card-text">{{ p.content }}</p>
+              <a href="{{ p.get_absolute_url }}" class="btn btn-primary">Read More &rarr;</a>
+            </div>
+            <div class="card-footer text-muted">
+              Posted on {{ p.created_at }} by
+              <a href="#">작성자명 쓸 위치(개발예정)</a>
+            </div>
+          </div>
+          {% endfor %}
           <!-- Pagination -->
           <ul class="pagination justify-content-center mb-4">
             <li class="page-item">
