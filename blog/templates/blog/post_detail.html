@@ -65,10 +65,12 @@
         <p>{{ post.created_at }}</p>
 
         <hr>
-
+        {% if p.head_image %}
         <!-- Preview Image -->
-        <img class="img-fluid rounded" src="{{ post.head_image.url }}" alt="">
-
+          <img class="img-fluid rounded" src="{{ post.head_image.url }}" alt="{{ post.title }} head_image">
+        {% else %}
+          <img class="img-fluid rounded" src="https://picsum.photos/seed/{{ post.id }}/800/200" alt="random_image">
+        {% endif %}
         <hr>
 
         <!-- Post Content -->
