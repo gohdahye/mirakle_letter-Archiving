@@ -39,7 +39,7 @@
     <hr>
 
     <!-- Post Content -->
-    <p>{{ post.content }}</p>
+    <p>{{ post.get_content_markdown | safe }}</p>
 
     <!-- tag -->
     {% if post.tags.exists %}
