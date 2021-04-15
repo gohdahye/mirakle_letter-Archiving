@@ -1,18 +1,182 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="ko">
     <head>
         <meta charset="UTF-8">
-        <title>개발자 달타냥입니다.</title>
+        <title>About 몽희입니다.</title>
+         <link rel="stylesheet" href="{% static 'blog/bootstrap/bootstrap.min.css' %}" media="screen">
+         <link rel="stylesheet" href="{% static 'single_pages/css/about_me.css' %}" media="screen">
+         <script src="https://kit.fontawesome.com/1aab6475fb.js" crossorigin="anonymous"></script>
     </head>
     <body>
-    <nav>
-        <a href="/blog/">Blog</a>
-        <a href="/about_me/">About me</a>
-    </nav>
 
-    <h1>안녕하세요. 달타냥입니다</h1>
-    <h2>이력</h2>
-    <h2>Portfolio</h2>
-    <h3>아직 공사중입니다. </h3>
+    {% include 'blog/navbar.html' %}
+    <section>
+        <div class="row">
+            <div class="col-lg-8">
+                <h1>안녕하세요. 몽희입니다.</h1>
+                <br/>
+                <p class="lead">
+                    터키힘줄과 육포를 좋아합니다.<br/>
+                    누나 방 러그에 영역표시를 자주하고, 혼납니다. 굴하지 않고 또 쌉니다.
+                </p>
+                <ul>
+                    <li>WORK EXPERIENCE</li>
+                    <ul>
+                        <li>매일경제 - 데이터분석 (2021.02 ~)</li>
+                        <li>안랩 - 인턴(2018.08 ~ 2019.02)</li>
+                    </ul>
+                    <li>EDUCATION</li>
+                    <ul>
+                        <li>공학학사, 소프트웨어(software), 단국대학교</li>
+                        <li>공학학사, 소프트웨어(software), 단국대학교</li>
+                        <li>공학학사, 소프트웨어(software), 단국대학교</li>
+                    </ul>
+                    <li>SCHEDULE</li>
+                    <ul>
+                        <li>동물병원 정기검진, 2021-04-17</li>
+                    </ul>
+                </ul>
+            </div>
+            <div class="col-lg-4">
+                <img class="img-fluid" src="{% static 'single_pages/images/mong.jpeg' %}">
+            </div>
+        </div>
+    </section>
+    <section class="bg-light margin-for-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h1>PORTFOLIO</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="card" data-toggle="modal" data-target="#monghe1">
+                        <img class="card-img-top" height="250px" src="{% static 'single_pages/images/mong1.jpeg' %}">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">아기 몽희 정말 작다[3개월]</h5>
+                        <p>몽희 데려온 다음날, 너모 작아요. 이 아이가 커서...</p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="card" data-toggle="modal" data-target="#monghe2">
+                        <img class="card-img-top" height="250px" src="{% static 'single_pages/images/mong2.jpeg' %}">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">벗꽃 몽희, 나는 꽃 개 입니다.</h5>
+                        <p>고매커피 근처에서.. 몽희 찰칵.. 어이어이 벚꽃 먹지마..</p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="card" data-toggle="modal" data-target="#monghe3">
+                        <img class="card-img-top" height="250px" src="{% static 'single_pages/images/mong3.jpeg' %}">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">몽희 미용한 날 ㅎㅎ</h5>
+                        <p>몽희 너 이제 컸구나..ㅎ 미용은 비싸다. 거의 헤어 살롱인줄 ;;</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal -->
+    <div class="modal fade" id="monghe1" tabindex="-1" role="dialog" aria-labelledby="pycon2017ModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="pycon2017ModalLabel">파이썬으로 통계업무 자동화하기</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-lg-7">
+                            <img class="img-fluid" src="{% static 'single_pages/images/mong1.jpeg' %}">
+                        </div>
+                        <div class="col-lg-5">
+                            <p>Python, Django, Pandas, python-docx로 통계업무 자동화한 내용을 파이콘에서 발표했습니다.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="monghe2" tabindex="-1" role="dialog" aria-labelledby="inflearnDjangoModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id=" inflearnDjangoModalLabel">파이썬 사용자를 위한 웹개발 입문 A to Z Django + Bootstrap</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-lg-7">
+                            <img class="img-fluid" src="{% static 'single_pages/images/mong2.jpeg' %}">
+                        </div>
+                        <div class="col-lg-5">
+                            <p>파이썬 초보를 대상으로 한 웹개발 강좌입니다. 인프런에서 서비스하고 있습니다.</p>
+                            <button type="button" class="btn btn-light"><i class="fas fa-chalkboard-teacher"></i> 인프런</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="monghe3" tabindex="-1" role="dialog" aria-labelledby="automationPythonModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id=" automationPythonModalLabel">직장인을 위한 프로그래밍 입문과 업무자동화 활용</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-lg-7">
+                            <img class="img-fluid" src="{% static 'single_pages/images/mong3.jpeg' %}">
+                        </div>
+                        <div class="col-lg-5">
+                            <p>코딩에 대해 아무것도 모르는 직장인들도 쉽게 프로그래밍의 기본 개념과 문법을 실습을 통해 배우고, 파일 입출력, 엑셀 데이터 처리, MS-word 문서 자동으로 만들기, 그래프 그리기, 웹스크래핑 등을 배웁니다.</p>
+                            <button type="button" class="btn btn-light"><i class="fas fa-chalkboard-teacher"></i> 인프런</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="fixed-bottom">
+         {% include 'blog/footer.html' %}
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+
     </body>
 </html>
