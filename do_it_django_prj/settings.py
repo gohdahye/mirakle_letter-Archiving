@@ -136,12 +136,13 @@ STATIC_ROOT = os.path.join(BASE_DIR, '_static')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, '_media')
+
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
-AUTHENTICATION_BACKEND = (
+AUTHENTICATION_BACKEND = [
     'django.contrib.auth.backend.ModelBackend',
     'allauth.account.auth_backends.AuthenticationBackend',
-)
+]
 
 SITE_ID = 1
 
