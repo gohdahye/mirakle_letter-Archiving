@@ -1,5 +1,5 @@
 #pull official base image
-FROM python:3.8.0-alpine
+FROM python:3.8-alpine
 
 #set work directory
 WORKDIR /usr/src/app
@@ -14,4 +14,5 @@ RUN apk add postgresql-dev gcc python3-dev musl-dev zlib-dev jpeg-dev libffi-dev
 COPY . /usr/src/app/
 #install dependencies
 RUN pip install --upgrade pip
+RUN pip install cryptography==3.2.1
 RUN pip install -r requirements.txt
