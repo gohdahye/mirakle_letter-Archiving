@@ -14,5 +14,4 @@ RUN apk add postgresql-dev gcc python3-dev musl-dev zlib-dev jpeg-dev libffi-dev
 COPY . /usr/src/app/
 #install dependencies
 RUN pip install --upgrade pip
-RUN pip install cryptography==3.2.1
 RUN pip install -r requirements.txt
