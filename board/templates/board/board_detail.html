@@ -1,0 +1,28 @@
+{% extends 'board/board_list.html' %}
+{% load static %}
+
+{% block main_area %}
+
+  <div class="card">
+    <div class="card-body">
+       <!-- Edit post -->
+      {% if user.is_superuser %}
+      <div class="d-grid gap-2 d-md-block float-end">
+        <a class="button is-link" style="text-decoration: none;" href="/board/update_board/{{ board.pk }}/" role="button">수정</a>
+        <a class="button is-danger" style="text-decoration: none;" href="/board/delete_board/{{ board.pk }}/" role="button">삭제</a>
+      </div>
+      {% endif %}
+      <h5 class="card-title">{{ board.title }}</h5>
+
+      <h6 class="card-subtitle mb-2 text-muted">{{ board.author }}</h6>
+      <div class="text-end">{{ board.created_at }}</div>
+
+      <hr/>
+      {{ board.content | safe }}
+    </div>
+  </div>
+
+{% endblock %}
+
+
+

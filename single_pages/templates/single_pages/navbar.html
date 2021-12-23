@@ -1,29 +1,28 @@
 {% load socialaccount %}
-
+{% load static %}
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
-            <a class="navbar-brand" href="/">Do It Django</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <a class="navbar-brand" href="/">Mirakle letter</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
-
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item active">
                   <a class="nav-link" href="/">Home</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="/blog/">Blog</a>
+                  <a class="nav-link" href="{% url 'blog' %}">Blog</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="/about_me/">About Me</a>
+                  <a class="nav-link" href="{% url 'boardList' %}">자유게시판</a>
                 </li>
               </ul>
-              <ul class="navbar-nav ml-auto">
+              <ul class="navbar-nav">
                 {% if user.is_authenticated %}
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
-                           role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                           role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             {% if user.socialaccount_set.all.first.get_avatar_url %}
                                 <img class="rounded-circle" width="25px" src="{{ user.socialaccount_set.all.first.get_avatar_url }}" alt="">
                             {% else %}
@@ -38,7 +37,7 @@
                     </li>
                 {% else %}
                     <li class="nav-item">
-                        <a class="nav-link" href="#" data-toggle="modal" data-target="#loginModal">Log In</a>
+                        <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Log In</a>
                     </li>
                 {% endif %}
             </ul>
