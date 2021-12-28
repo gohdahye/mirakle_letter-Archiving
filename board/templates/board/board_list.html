@@ -7,7 +7,7 @@
     <div class="row gx-5 justify-content-left">
         <div class="col-lg">
             <div class="text-center my-5">
-                <h1 class="display-5 fw-bolder my-3">자유게시판</h1>
+                <h1 class="display-5 fw-bolder my-3">게시판</h1>
                 <p>미라클레터에 대해 자유롭게 작성해주세요.</p>
             </div>
         </div>
@@ -41,7 +41,7 @@
                 </table>
             </div>
 
-              {% if request.user.is_superuser %}
+              {% if request.user.is_authenticated %}
               <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                 <a href="{% url 'board_create' %}" type="button" class="btn btn-secondary float-end">글쓰기</a>
               </div>

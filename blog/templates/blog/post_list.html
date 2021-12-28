@@ -4,14 +4,14 @@
 
   {% if user.is_authenticated %}
     {% if user.is_superuser or user.is_staff %}
-      <a class="btn btn-info btn-sm float-right" href="/blog/create_post/"
-         role="button"><i class="fas fa-pen"></i>&nbsp;&nbsp;New Post </a>
+      <a class="btn btn-primary btn-sm float-end" href="/blog/create_post/"
+         role="button"><i class="fas fa-pen"></i>&nbsp;&nbsp;글쓰기 </a>
     {% endif %}
   {% endif %}
-  <h1>Blog
+  <h1>뉴스 레터
       {% if search_info %}<small class="text-muted">{{ search_info }}</small>{% endif %}
-      {% if category %}<span class="badge badge-secondary">{{ category }}</span>{% endif %}
-      {% if tag %}<span class="badge badge-light"><i class="fas fa-tags"></i>{{ tag }} ({{ tag.post_set.count }})</span>{% endif %}
+      {% if category %}<span class="badge bg-secondary">{{ category }}</span>{% endif %}
+      {% if tag %}<span class="badge bg-secondary"><i class="fas fa-tags"></i>{{ tag }} ({{ tag.post_set.count }})</span>{% endif %}
   </h1>
 
       {% if post_list.exists %}
@@ -27,9 +27,9 @@
           <!-- card body -->
           <div class="card-body">
             {% if p.category %}
-              <span class="badge badge-secondary float-right">{{ p.category }}</span>
+              <h4><span class="badge bg-secondary float-end">{{ p.category }}</span></h4>
             {% else %}
-              <span class="badge badge-secondary float-right">미분류</span>
+              <span class="badge bg-secondary float-end">미분류</span>
             {% endif %}
             <h2 class="card-title">{{ p.title }}</h2>
             {% if p.hook_text %}
@@ -41,18 +41,18 @@
             {% if p.tags.exists %}
               <i class="fas fa-tags"></i>
               {% for tag in p.tags.iterator %}
-                <a href="{{ tag.get_absolute_url }}"><span class="badge badge-pill badge-light">{{ tag }}</span> </a>
+                <a href="{{ tag.get_absolute_url }}"><span class="badge bg-secondary">{{ tag }}</span> </a>
               {% endfor %}
               <br/>
               <br/>
             {% endif %}
 
-            <a href="{{ p.get_absolute_url }}" class="btn btn-primary">Read More &rarr;</a>
+            <a href="{{ p.get_absolute_url }}" class="btn btn-primary">더보기 &rarr;</a>
           </div>
 
           <!-- card footer -->
           <div class="card-footer text-muted">
-            Posted on {{ p.created_at }} by
+            <b>작성 일시</b> : {{ p.created_at }} <b>작성자</b> :
             <a href="#">{{ p.author | upper }}</a>
           </div>
         </div>

@@ -1,17 +1,16 @@
-.wrapper{
-    height:auto;
-    min-height:100%;
-    padding-bottom:60px;
-}
-footer {
-    height:60px;
-    position:relative;
-    transform: translateY(-100%);
-}
-section{
-    margin-bottom: 150px;
-}
 
+.back {
+    height:1080px;
+    background: url('/static/single_pages/images/back.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
 .card{
     background-color: rgba(255,255,255, 0.6);
+}
+
+.hr{
+    margin:0;
 }
