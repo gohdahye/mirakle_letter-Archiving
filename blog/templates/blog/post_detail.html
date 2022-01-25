@@ -46,7 +46,7 @@
     <div class="d-flex">
         <i class="fas fa-tags me-2"></i>
         {% for tag in post.tags.all %}
-          <h5><a href="{{ tag.get_absolute_url }}" class="badge bg-light text-dark text-decoration-none">{{ tag }}</a></h5>
+          <h5><a href="{{ tag.get_absolute_url }}" class="badge bg-secondary text-decoration-none me-2">{{ tag }}</a></h5>
         {% endfor %}
         <br/>
         <br/>

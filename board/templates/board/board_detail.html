@@ -6,10 +6,10 @@
   <div class="card">
     <div class="card-body">
        <!-- Edit post -->
-      {% if user.is_superuser %}
+      {% if user.is_authenticated and user == board.author %}
       <div class="d-grid gap-2 d-md-block float-end">
-        <a class="button is-link" style="text-decoration: none;" href="/board/update_board/{{ board.pk }}/" role="button">수정</a>
-        <a class="button is-danger" style="text-decoration: none;" href="/board/delete_board/{{ board.pk }}/" role="button">삭제</a>
+        <a class="btn btn-info btn-sm" style="text-decoration: none;" href="/board/update_board/{{ board.pk }}/" role="button">수정</a>
+        <a class="btn btn-danger btn-sm" style="text-decoration: none;" href="/board/delete_board/{{ board.pk }}/" role="button">삭제</a>
       </div>
       {% endif %}
       <h5 class="card-title">{{ board.title }}</h5>

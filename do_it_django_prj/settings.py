@@ -41,12 +41,14 @@ INSTALLED_APPS = [
     'django_extensions',
 
     'crispy_forms',
+    'crispy_bootstrap5',
     'markdownx',
     'django.contrib.sites',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
+    'django_summernote',
 
     'blog',
     'single_pages',
@@ -138,7 +140,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, '_static')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, '_media')
 
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
+CRISPY_ALLOWED_TEMPLATE_PACKS = 'bootstrap5'
+CRISPY_TEMPLATE_PACK = 'bootstrap5'
 
 AUTHENTICATION_BACKEND = [
     'django.contrib.auth.backend.ModelBackend',
@@ -151,3 +154,20 @@ ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_EMAIL_VERIFICATION = 'none'
 LOGIN_REDIRECT_URL = '/blog/'
 
+
+# 사이트 내 최대 업로드 용량
+DATA_UPLOAD_MAX_NUMBER_FIELDS = 1000000
+SQLITE_MAX_VARIABLE_NUMBER = 1000000
+
+# 서머노트 환경설정
+X_FRAME_OPTIONS = 'SAMEORIGIN'
+SUMMERNOTE_THEME = 'bs4'
+
+SUMMERNOTE_CONFIG = {
+    'summernote': {
+
+            # Change editor size
+            'width': '100%',
+            'height': '480',
+    }
+}

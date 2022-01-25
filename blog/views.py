@@ -1,11 +1,12 @@
 from django.shortcuts import render, redirect
-from django.views.generic import ListView, DetailView, CreateView, UpdateView
+from django.urls import reverse_lazy
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.utils.text import slugify
 from django.shortcuts import get_object_or_404
 from .models import Post, Category, Tag, Comment
 from django.core.exceptions import PermissionDenied
-from .forms import CommentForm
+from .forms import CommentForm, PostForm
 from django.db.models import Q
 
 
@@ -37,7 +38,7 @@ class PostDetail(DetailView):
 
 class PostCreate(LoginRequiredMixin, UserPassesTestMixin, CreateView):
     model = Post
-    fields = ['title', 'hook_text', 'content', 'head_image', 'file_upload', 'category']
+    form_class = PostForm
 
     def test_func(self):
         return self.request.user.is_superuser or self.request.user.is_staff
@@ -112,6 +113,21 @@ class PostUpdate(LoginRequiredMixin, UpdateView):
         return response
 
 
+class PostDelete(DeleteView):
+    model = Post
+    context_object_name = 'target_post'
+    success_url = reverse_lazy('postList')
+
+    def dispatch(self, request, *args, **kwargs):
+        if request.user.is_superuser:
+            return super(PostDelete, self).dispatch(request, *args, **kwargs)
+        else:
+            raise PermissionDenied
+
+    def get(self, request, *args, **kwargs):
+        return self.post(request, *args, **kwargs)
+
+
 class CommentUpdate(LoginRequiredMixin, UpdateView):
     model = Comment
     form_class = CommentForm
@@ -129,7 +145,9 @@ class PostSearch(PostList):
     def get_queryset(self):
         q = self.kwargs['q']
         post_list = Post.objects.filter(
-            Q(title__contains=q) | Q(tags__name__contains=q)
+            Q(title__contains=q) |
+            Q(tags__name__contains=q) |
+            Q(content__contains=q)
         ).distinct()
         return post_list
 
