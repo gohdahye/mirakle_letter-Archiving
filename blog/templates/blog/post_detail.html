@@ -74,7 +74,7 @@
           <button type="submit" class="btn btn-primary float-end">제출</button>
         </form>
         {% else %}
-          <a role="button" class="btn btn-outline-dark btn-block btn-sm" href="#" data-toggle="modal" data-target="#loginModal">Log in and leave a comment</a>
+          <a role="button" class="btn btn-outline-dark btn-block btn-sm" href="#" data-toggle="modal" data-target="#loginModal">로그인 후에 댓글을 남겨주세요.</a>
         {% endif %}
       </div>
     </div>
@@ -107,15 +107,15 @@
                   <div class="modal-dialog" role="document">
                     <div class="modal-content">
                       <div class="modal-header">
-                        <h5 class="modal-title" id="deleteModalLabel">Are You Sure?</h5>
+                        <h5 class="modal-title" id="deleteModalLabel">삭제 할까요?</h5>
                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                       </div>
                       <div class="modal-body">
                         <del>{{ comment | linebreaks }}</del>
                       </div>
                       <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                        <a role="button" class="btn btn-danger" href="/blog/delete_comment/{{ comment.pk }}/">Delete</a>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+                        <a role="button" class="btn btn-danger" href="/blog/delete_comment/{{ comment.pk }}/">삭제</a>
                       </div>
                     </div>
                   </div>
@@ -126,7 +126,7 @@
               </h5>
                 <p>{{ comment.content | linebreaks }}</p>
                 {% if comment.created_at != comment.modified_at %}
-                  <p class="text-muted float-end"><small>Updated: {{ comment.modified_at }}</small></p>
+                  <p class="text-muted float-end"><small>작성 일시: {{ comment.modified_at }}</small></p>
                 {% endif %}
             </div>
           </div>
