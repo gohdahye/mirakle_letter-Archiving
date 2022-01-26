@@ -3,48 +3,55 @@
 {% block content %}
   <div class="container py-5">
       <div class="row">
+        <div class="col mb-3">
+          <h2 class="container">
+            <b>뉴스 레터</b>
+            {% if search_info %}<small class="text-muted">{{ search_info }}</small>{% endif %}
+            {% if category %}<span class="badge bg-secondary">{{ category }}</span>{% endif %}
+            {% if tag %}<span class="badge bg-secondary"><i class="fas fa-tags"></i>{{ tag }} ({{ tag.post_set.count }})</span>{% endif %}
+          </h2>
+        </div>
+      </div>
+      <div class="row">
         <div class="col-md-8 col-lg-9" id="main-area">
           {% block main_area %}
           {% endblock %}
         </div>
         <div class="col-md-4 col-lg-3">
-          <!-- Search Widget -->
-          <div class="card my-4">
-            <h5 class="card-header">검색</h5>
-            <div class="card-body">
-              <div class="input-group">
-                <input type="text" class="form-control" placeholder="내용을 검색하세요." id="search-input">
-                <span class="input-group-append">
-                  <button class="btn btn-secondary" type="button" onclick="searchPost();"><i class="fas fa-search"></i></button>
-                </span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Categories Widget -->
-          <div class="card my-4" id="categories-card">
-            <h5 class="card-header">카테고리</h5>
-            <div class="card-body">
-              <div class="row">
-                <div class="myLink">
-                  <ul class="list-unstyled mb-0">
-                    {% for category in categories %}
-                    <li>
-                      <a href="{{ category.get_absolute_url }} " class="d-inline-flex align-items-center rounded">{{ category }} ({{ category.post_set.count }})</a>
-                    </li>
-                    {% endfor %}
-                    <li>
-                      <a href="/blog/category/no_category/" class="d-inline-flex align-items-center rounded">미분류 ({{ no_category_post_count }})</a>
-                    </li>
-                  </ul>
+            <!-- Search Widget -->
+            <div class="card my-4">
+              <h5 class="card-header">검색</h5>
+              <div class="card-body">
+                <div class="input-group">
+                  <input type="text" class="form-control" placeholder="내용을 검색하세요." id="search-input">
+                  <span class="input-group-append">
+                    <button class="btn btn-secondary" type="button" onclick="searchPost();"><i class="fas fa-search"></i></button>
+                  </span>
                 </div>
               </div>
             </div>
-          </div>
+            <!-- Categories Widget -->
+            <div class="card my-4" id="categories-card">
+              <h5 class="card-header">카테고리</h5>
+              <div class="card-body">
+                <div class="row">
+                  <div class="myLink">
+                    <ul class="list-unstyled mb-0">
+                      {% for category in categories %}
+                      <li>
+                        <a href="{{ category.get_absolute_url }} " class="d-inline-flex align-items-center rounded">{{ category }} ({{ category.post_set.count }})</a>
+                      </li>
+                      {% endfor %}
+                      <li>
+                        <a href="/blog/category/no_category/" class="d-inline-flex align-items-center rounded">미분류 ({{ no_category_post_count }})</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
         </div>
       </div>
       <!-- /.row -->
-
-</div>
-
+  </div>
 {% endblock %}

@@ -1,3 +1,4 @@
+from django.contrib.auth import get_user_model
 from django.db import models
 from django.contrib.auth.models import User
 from markdownx.models import MarkdownxField
@@ -69,7 +70,8 @@ class Post(models.Model):
         if self.author.socialaccount_set.exists():
             return self.author.socialaccount_set.first().get_avatar_url()
         else:
-            return f'https://doitdjango.com/avatar/id/112/9d3403be50025645/svg/{self.author.email}'
+            return f'https://avatars.dicebear.com/api/avataaars/:seed.svg/{self.author.email}.png'
+
 
 class Comment(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
@@ -85,8 +87,9 @@ class Comment(models.Model):
         return f'{self.post.get_absolute_url()}#comment-{self.pk}'
 
     def get_avatar_url(self):
+
         if self.author.socialaccount_set.exists():
             return self.author.socialaccount_set.first().get_avatar_url()
         else:
-            return f'https://doitdjango.com/avatar/id/112/9d3403be50025645/svg/{self.author.email}'
+            return f'https://avatars.dicebear.com/api/avataaars/:seed.svg/{self.author.email}.png'
 

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+    <body>
+
+        <form action="" method="POST">
+            {% csrf_token %}
+            <div class="col-sm-10">
+                <input class="form-check-input" type="checkbox" id="invalidCheck1" required>
+                <label class="form-check-label" for="invalidCheck1">&nbsp; 이용약관에 동의합니다.</label>
+            </div>
+            <div class="col-sm-10">
+                <input class="form-check-input" type="checkbox" id="invalidCheck2" required>
+                <label class="form-check-label" for="invalidCheck2">&nbsp; 개인정보 수집 및 이용에 동의합니다.</label>
+            </div>
+        </form>
+
+    </body>
+{% endblock %}
+

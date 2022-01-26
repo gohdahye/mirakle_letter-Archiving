@@ -1,0 +1,66 @@
+{% extends 'cards/index.html' %}
+
+{% load static %}
+{% load crispy_forms_tags %}
+
+    <!-- content -->
+    {% block contents %}
+
+    {% load crispy_forms_tags %}
+
+    <div class="card-body my-3">
+
+        <div class="row">
+
+            <div class="col-xs pb-4">
+
+                <a class="btn btn-info btn-sm float-right" href="/profile/update/"><i class="fas fa-pen"></i>수정</a>
+
+		    	<div class="card p-4">
+                    <p class="text-muted mb-0" style="font-size: 12px">성함</p>
+                    <p>{{ user.profile.name }}</p>
+                    <p class="text-muted mb-0" style="font-size: 12px">아이디</p>
+			    	<p>{{ user.username }}</p>
+                    <p class="text-muted mb-0" style="font-size: 12px">이메일</p>
+			    	<p>{{ user.email }}</p>
+                    <p class="text-muted mb-0" style="font-size: 12px">부서</p>
+			    	<p>{{ user.profile.team }}</p>
+		    	</div>
+		  	</div>
+
+        </div>
+
+    </div>
+
+<!-- js -->
+<script>
+    $(function() {
+        var preview = {
+        init: function() {
+            preview.setPreviewImg();
+            preview.listenInput();
+        },
+        setPreviewImg: function(fileInput) {
+            var path = $(fileInput).val();
+            var uploadText = $(fileInput).siblings('.file-upload-text');
+
+            if (!path) {
+            $(uploadText).val('');
+            } else {
+            path = path.replace(/^C:\\fakepath\\/, "");
+            $(uploadText).val(path);
+            }
+        },
+        listenInput: function() {
+            $('.file-upload-native').on('change', function() {
+            preview.setPreviewImg(this);
+            });
+        }
+        };
+        preview.init();
+    });
+
+
+</script>
+
+{% endblock %}

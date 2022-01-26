@@ -1,0 +1,73 @@
+{% extends 'single_pages/landing.html' %}
+
+{% load static %}
+{% load crispy_forms_tags %}
+
+    {% block header_img %}
+    <div class="col-lg-6">
+        <div class="text-left my-5">
+            <h1 class="display-5 fw-bolder my-3">MK 명함첩</h1>
+            <p class="mb-4">본 명함첩은 기존 리멤버 팀 명함첩에 속해있지 않거나, 리멤버 앱을 사용하는 데 어려움을 겪어 연락처를 찾는 것이 힘든 분들을 위해 만들어졌습니다.</p>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <img class="card-img" src="{% static 'cards/images/email.png' %}" style="max-width:350px;max-height:350px;"  />
+    </div>
+    {% endblock %}
+
+    <!-- content -->
+    {% block contents %}
+    <body class="bg-white">
+        <div class="container">
+            <div class="card-body my-3">
+                <div class="home-container-contact">
+                    {% if error_message %}
+                    <div class="alert alert-primary" role="alert">
+                        {{ error_message }}
+                    </div>
+                    {% endif %}
+                    <div class="col-xs " style="font-size:1.45rem; font-weight:bold; margin-bottom:0.87rem;">명함 업로드 페이지</div>
+                    <span>
+                          파일 업로드 양식을 다운받으시고, 양식에 맞추어 파일을 업로드 해 주세요.<br>
+                        <span style="color:#ff9800; font-weight: 700;">이름, 전화번호, 회사</span>는 꼭 넣어주셔야 하며, 맨 마지막 열에는 아무것도 넣지 않으셔야 합니다.<br>
+                          만약 오류가 생긴다면 연락주세요.
+                    </span>
+                    <div class="download-link" style="margin-top:0.87rem;">
+                      <a href="https://drive.google.com/file/d/1OLLw6AkqZBWNFYb6c8K4IuxXvQfA4Mj3/view?usp=sharing"> ▶ 양식 다운로드 ◀ </a>
+                    </div>
+                    <b class="form-text" style="color:red">* 파일명은 꼭 바꿔주세요.</b>
+                    <hr/>
+                    <div class="contact-form">
+                        {% if messages %}
+                          <div style="z-index:11">
+                              {% for message in messages %}
+                                <div class="alert alert-{{ message.tags }} alert-auto-dismissible alert-dismissible notification-container text-center"
+                                     role="alert" data-bs-delay="8000" >
+                                    <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                    {{ message }}
+                                </div>
+                              {% endfor %}
+                          </div>
+                        {% endif %}
+                      <form method="POST" action="{% url 'mypage' %}" enctype="multipart/form-data">
+                          {% csrf_token %}
+                          {{ form.name.errors }}
+                          {{ form | crispy }}
+                          <b id="documentHelps1" class="form-text" style="color:red">* 파일 명의 공백이 있으면 업로드 되지 않습니다.</b><br>
+                          <small id="documentHelp" class="form-text text-muted">첨부파일은 csv, xlsx, xls 확장자를 가진 한 가지 파일만 첨부하실 수 있습니다.
+                              <br>파일 최대 크기는 1MB 입니다.
+                          </small>
+                          <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-3">
+                            <button class="btn btn-primary" type="submit" name="submit" value="upload">업로드</button>
+                          </div>
+                      </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+
+
+
+{% endblock %}

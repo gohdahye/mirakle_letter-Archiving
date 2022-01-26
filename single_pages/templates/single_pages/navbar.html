@@ -3,7 +3,7 @@
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container ">
             <a class="navbar-brand" href="/"><img src="{% static 'single_pages/images/black_logo.png' %}" width="134" height="26"></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -26,13 +26,13 @@
                             {% if user.socialaccount_set.all.first.get_avatar_url %}
                                 <img class="rounded-circle" width="25px" src="{{ user.socialaccount_set.all.first.get_avatar_url }}" alt="">
                             {% else %}
-                                 <img class="rounded-circle" width="25px" src="https://avatars.dicebear.com/api/avataaars/:seed.svg/{{ user.username }}.png">
+                                 <img class="rounded-circle" width="25px" src="https://avatars.dicebear.com/api/avataaars/:seed.svg/{{ user.email }}.png">
                             {% endif %}
                             &nbsp;
                             {{ user.username }}
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="/accounts/logout/">Log Out</a>
+                            <a class="dropdown-item" href="{% url 'logout' %}">Log Out</a>
                         </div>
                     </li>
                 {% else %}
@@ -57,10 +57,10 @@
           <div class="row">
             <div class="col-md-6">
               <a role="button" class="btn btn-outline-dark btn-sm mb-3 col-12" href="{% provider_login_url 'google' %}"><i class="fab fa-google"></i>&nbsp&nbsp Log in with Google</a>
-              <a role="button" class="btn btn-outline-dark btn-sm col-12" href="/accounts/login/"><i class="far fa-envelope"></i>&nbsp&nbsp Log in with E-mail</a>
+              <a role="button" class="btn btn-outline-dark btn-sm col-12" href="{% url 'login' %}"><i class="far fa-envelope"></i>&nbsp&nbsp Log in with E-mail</a>
             </div>
             <div class="col-md-6">
-              <a role="button" class="btn btn-outline-dark btn-sm col-12" href="/accounts/signup/"><i class="far fa-envelope"></i>&nbsp&nbsp Sign Up with E-mail</a>
+              <a role="button" class="btn btn-outline-dark btn-sm col-12" href="{% url 'logout' %}"><i class="far fa-envelope"></i>&nbsp&nbsp Sign Up with E-mail</a>
             </div>
           </div>
         </div>

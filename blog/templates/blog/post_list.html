@@ -3,18 +3,17 @@
 {% block main_area %}
 
     <!-- Newsletter post -->
-    {% if user.is_authenticated %}
-      {% if user.is_superuser or user.is_staff %}
-        <a class="btn btn-primary btn-sm float-end" href="/blog/create_post/"
-           role="button"><i class="fas fa-pen"></i>&nbsp;&nbsp;글쓰기 </a>
-      {% endif %}
-    {% endif %}
     <div class="container">
-      <h2 class="mb-4"><b>뉴스 레터</b>
-        {% if search_info %}<small class="text-muted">{{ search_info }}</small>{% endif %}
-        {% if category %}<span class="badge bg-secondary">{{ category }}</span>{% endif %}
-        {% if tag %}<span class="badge bg-secondary"><i class="fas fa-tags"></i>{{ tag }} ({{ tag.post_set.count }})</span>{% endif %}
-      </h2>
+      <div class="row">
+        {% if user.is_authenticated %}
+            {% if user.is_superuser or user.is_staff %}
+              <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <a class="btn btn-primary btn-sm float-end" href="/blog/create_post/"
+                 role="button"><i class="fas fa-pen"></i>&nbsp;&nbsp;글쓰기 </a>
+              </div>
+            {% endif %}
+          {% endif %}
+      </div>
       {% if post_list.exists %}
       <div class="row">
         {% for p in post_list %}
@@ -45,12 +44,11 @@
 
               <!-- card footer -->
               <div class="card-footer text-muted">
-                <b>작성 일시</b> : {{ p.created_at }}<br> <b>작성자</b> :
+                <b>작성 일시</b> : {{ p.created_at.date }}<br> <b>작성자</b> :
                 <a href="#">{{ p.author | upper }}</a>
               </div>
 
             </div>
-
           </div>
         {% endfor%}
       </div>

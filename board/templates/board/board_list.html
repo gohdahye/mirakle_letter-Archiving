@@ -32,7 +32,7 @@
                   {% for board in board_list %}
                     <tr>
                       <th scope="row">{{ board.pk }}</th>
-                      <td class="col-5"><a href="{{ board.get_absolute_url }}">{{ board.title }}</a></td>
+                      <td class="col-5"><a class="text-decoration-none" href="{{ board.get_absolute_url }}" style="color:black;">{{ board.title }}</a></td>
                       <td>{{ board.author }}</td>
                       <td class="col-3">{{ board.created_at }}</td>
                     </tr>

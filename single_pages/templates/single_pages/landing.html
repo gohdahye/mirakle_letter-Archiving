@@ -31,7 +31,7 @@
               <nav class="navbar navbar-expand-lg navbar-dark">
                     <div class="container ">
                         <a class="navbar-brand" href="/"><img src="{% static 'single_pages/images/white_logo.png' %}" width="134" height="26"></a>
-                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                           <span class="navbar-toggler-icon"></span>
                         </button>
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -54,7 +54,7 @@
                                         {% if user.socialaccount_set.all.first.get_avatar_url %}
                                             <img class="rounded-circle" width="25px" src="{{ user.socialaccount_set.all.first.get_avatar_url }}" alt="">
                                         {% else %}
-                                             <img class="rounded-circle" width="25px" src="https://avatars.dicebear.com/api/avataaars/:seed.svg/{{ user.username }}.png">
+                                             <img class="rounded-circle" width="25px" src="https://avatars.dicebear.com/api/avataaars/:seed.svg/{{ user.email }}.png">
                                         {% endif %}
                                         &nbsp;
                                         {{ user.username }}

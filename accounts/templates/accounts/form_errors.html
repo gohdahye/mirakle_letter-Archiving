@@ -1,0 +1,10 @@
+<div id="mkAlertPlaceholder"></div>
+
+ {% if messages %}
+    <div class="alert alert-danger my-2 text-center" role="alert">
+    {% for messages in messages %}
+            <strong>{{ messages.message }}</strong>
+    {% endfor %}
+    </div>
+{% endif %}
+

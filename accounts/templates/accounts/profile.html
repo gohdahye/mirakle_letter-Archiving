@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load crispy_forms_tags %}
+{% load static %}
+    <!-- header -->
+     <header class="bg-light py-5">
+        <div class="container px-5">
+            <div class="row gx-5 justify-content-left">
+                <div class="col-lg">
+                    <div class="text-center my-5">
+                        <h1 class="display-5 fw-bolder my-3">마이페이지</h1>
+                        <p>매경 임직원 계정을 인증하셔야 팀명함첩을 이용할 수 있습니다.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- body -->
+    <div class="container my-3">
+        {% if user.is_authenticated %}
+        <div class="row p-5 justify-content-center">
+            <div class="col-5">
+                <div class="text-center">
+                    <h3 class="mb-3">매경 임직원 인증</h3>
+                    <div class="alert alert-warning" role="alert">이름, 부서, mk.co.kr 계정 id, pw 입력 후 인증해주세요.</div>
+                </div>
+                <hr/>
+                <div class="mb-3 row">
+                    <label for="staticID" class="col-sm-2 col-form-label">아이디</label>
+                    <div class="col-sm-10">
+                      <input type="text" readonly class="form-control-plaintext" id="staticID" value="{{ user.username }}">
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label for="staticEmail" class="col-sm-2 col-form-label">이메일</label>
+                    <div class="col-sm-10">
+                    <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="{{ user.email }}">
+                    </div>
+                </div>
+                <hr/>
+                {% if messages %}
+                    <div class="alert alert-danger my-3" role="alert">
+                      {% for messages in messages %}
+                         {{ messages.message }}
+                      {% endfor %}
+                    </div>
+                {% endif %}
+
+                 <form method="POST">{% csrf_token %}
+                     <div class="mb-3 row">
+                      <label for="name" class="col-sm-2 col-form-label">성함</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" id="name" name="name" placeholder="성함">
+                      </div>
+                    </div>
+
+                    <div class="mb-3 row">
+                        <label for="mk_team" class="col-sm-2 col-form-label">부서</label>
+                        <div class="col-sm-10">
+                            <select class="form-select" id="mk_team" name="mk_team">
+                              <option value="" selected>-----------</option>
+                              {% for team in all_team %}
+                              <option value="{{team.id}}"
+                                      {% if team.id == mk_team %} selected{% endif %}>
+                              {{ team.team_dep }}</option>
+                              {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="mkID" class="col-sm-2 col-form-label">MK 아이디</label>
+                        <div class="col-sm-10">
+                            <input type="id" class="form-control" id="mkID" name="mkID" placeholder="MK id" >
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                      <label for="mkpw" class="col-sm-2 col-form-label">Password</label>
+                      <div class="col-sm-10">
+                          <input type="password" class="form-control" id="mkpw" name="mkpw" placeholder="Password">
+                      </div>
+                    </div>
+                     <button class="btn btn-primary mx-auto d-block" type="submit">인증하기</button>
+                  </form>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+
+
+
+{% endblock %}
