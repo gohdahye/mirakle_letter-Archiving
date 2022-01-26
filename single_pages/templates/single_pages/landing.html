@@ -60,12 +60,13 @@
                                         {{ user.username }}
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                        <a class="dropdown-item" href="/accounts/logout/">Log Out</a>
+                                        <a class="dropdown-item" href="{% url 'logout' %}">로그아웃</a>
+                                        <a class="dropdown-item" href="{% url 'password_reset' %}">비밀번호 변경</a>
                                     </div>
                                 </li>
                             {% else %}
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Log In</a>
+                                    <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#loginModal">로그인</a>
                                 </li>
                             {% endif %}
                         </ul>
@@ -77,21 +78,21 @@
                 <div class="modal-dialog">
                   <div class="modal-content">
                     <div class="modal-header">
-                      <h5 class="modal-title" id="loginModalLabel"><i class="fas fa-sign-in-alt"></i>&nbsp Log In</h5>
+                      <h5 class="modal-title" id="loginModalLabel"><i class="fas fa-sign-in-alt"></i>&nbsp 로그인 </h5>
                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                       <div class="row">
                         <div class="col-md-6 ">
                           <a role="button" class="btn btn-outline-dark btn-sm mb-3 col-12" href="{% provider_login_url 'google' %}">
-                              <i class="fab fa-google"></i>&nbsp&nbsp Log in with Google
+                              <i class="fab fa-google"></i>&nbsp&nbsp 구글계정으로 로그인
                           </a>
                           <a role="button" class="btn btn-outline-dark btn-sm col-12" href="/accounts/login/">
-                              <i class="far fa-envelope"></i>&nbsp&nbsp Log in with E-mail
+                              <i class="far fa-envelope"></i>&nbsp&nbsp 이메일로 로그인
                           </a>
                         </div>
                         <div class="col-md-6 ">
-                          <a role="button" class="btn btn-outline-dark btn-sm col-12" href="/accounts/signup/"><i class="far fa-envelope"></i>&nbsp&nbsp Sign Up with E-mail</a>
+                          <a role="button" class="btn btn-outline-dark btn-sm col-12" href="/accounts/signup/"><i class="far fa-envelope"></i>&nbsp&nbsp 이메일로 회원가입</a>
                         </div>
                       </div>
                     </div>

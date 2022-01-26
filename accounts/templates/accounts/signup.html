@@ -6,7 +6,6 @@
         <main class="form-signup">
             <div class="text-center">
               <h4 class="mb-4">회원가입</h4>
-              <div class="alert alert-warning" role="alert">미라클레터 회원가입</div>
             </div>
             <form class="needs-validation" method="POST" action="{% url 'signup' %}" novalidate>
             {% csrf_token %}
@@ -55,7 +54,7 @@
             <div class="mb-3 row" >
                 <div class="col-sm-10">
                     <input class="form-check-input" type="checkbox" id="invalidCheck" required>
-                    <label class="form-check-label" for="invalidCheck">&nbsp; 이용약관에 동의</label>
+                    <label class="form-check-label" for="invalidCheck">&nbsp; 개인정보 수집에 동의</label>
                     <div class="invalid-feedback">
                     제출하기 전에 동의해야 합니다.
                     </div>
