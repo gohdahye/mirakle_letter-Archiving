@@ -11,9 +11,15 @@
                 <li class="nav-item active">
                   <a class="nav-link" href="/">홈</a>
                 </li>
+                {% if request.user.is_authenticated %}
                 <li class="nav-item">
                   <a class="nav-link" href="{% url 'blog' %}">뉴스레터</a>
                 </li>
+                {% else %}
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'login' %}">뉴스레터</a>
+                </li>
+                {% endif %}
                 <li class="nav-item">
                   <a class="nav-link" href="{% url 'boardList' %}">게시판</a>
                 </li>
@@ -23,11 +29,6 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
                            role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            {% if user.socialaccount_set.all.first.get_avatar_url %}
-                                <img class="rounded-circle" width="25px" src="{{ user.socialaccount_set.all.first.get_avatar_url }}" alt="">
-                            {% else %}
-                                 <img class="rounded-circle" width="25px" src="https://avatars.dicebear.com/api/avataaars/:seed.svg/{{ user.email }}.png">
-                            {% endif %}
                             &nbsp;
                             {{ user.username }}
                         </a>
@@ -38,7 +39,7 @@
                     </li>
                 {% else %}
                     <li class="nav-item">
-                        <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#loginModal">로그인</a>
+                        <a class="nav-link" href="{% url 'login' %}" >로그인</a>
                     </li>
                 {% endif %}
             </ul>
@@ -46,29 +47,4 @@
     </div>
   </nav>
 
-  <!-- Modal -->
-  <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="loginModalLabel"><i class="fas fa-sign-in-alt"></i>&nbsp Log In</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <div class="row">
-            <div class="col-md-6">
-              <a role="button" class="btn btn-outline-dark btn-sm mb-3 col-12" href="{% provider_login_url 'google' %}"><i class="fab fa-google"></i>&nbsp&nbsp Log in with Google</a>
-              <a role="button" class="btn btn-outline-dark btn-sm col-12" href="{% url 'login' %}"><i class="far fa-envelope"></i>&nbsp&nbsp Log in with E-mail</a>
-            </div>
-            <div class="col-md-6">
-              <a role="button" class="btn btn-outline-dark btn-sm col-12" href="{% url 'logout' %}"><i class="far fa-envelope"></i>&nbsp&nbsp Sign Up with E-mail</a>
-            </div>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        </div>
-      </div>
-    </div>
-  </div>
 

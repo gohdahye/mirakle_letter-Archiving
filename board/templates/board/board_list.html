@@ -41,11 +41,15 @@
                 </table>
             </div>
 
-              {% if request.user.is_authenticated %}
+            {% if request.user.is_authenticated %}
               <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                 <a href="{% url 'board_create' %}" type="button" class="btn btn-secondary float-end">글쓰기</a>
               </div>
-              {% endif %}
+            {% else %}
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                    <a href="{% url 'login' %}" type="button" class="btn btn-secondary float-end">글쓰기</a>
+                </div>
+            {% endif %}
           {% endblock %}
         </div>
       </div>
