@@ -40,15 +40,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_extensions',
-
+    'import_export',
     'crispy_forms',
     'crispy_bootstrap5',
     'markdownx',
     'django.contrib.sites',
-    'allauth',
-    'allauth.account',
-    'allauth.socialaccount',
-    'allauth.socialaccount.providers.google',
     'django_summernote',
 
     'blog',
@@ -172,3 +168,5 @@ SUMMERNOTE_CONFIG = {
             'height': '480',
     }
 }
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
