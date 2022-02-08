@@ -57,6 +57,11 @@
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
                                        role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        {% if user.profile.image %}
+                                            <img class="rounded-circle" src="{{ user.profile.image.url }}" width="25px" alt="">
+                                        {% else %}
+                                            <img class="rounded-circle" src="https://avatars.dicebear.com/api/avataaars/:seed.svg/{{ user.email }}.png" width="25px" alt="">
+                                        {% endif %}
                                         &nbsp;
                                         {{ user.username }}
                                     </a>
@@ -91,7 +96,11 @@
                                     <div class="card-body">
                                         <h6><a href="{{ post.get_absolute_url }}" class="text-decoration-none text-dark">{{ post.title }}</a> </h6>
                                         <span class="badge bg-light text-dark float-end">
-                                            <img class="me-1 rounded-circle" width="20px" src="http://placehold.it/20x20">
+                                            {% if user.profile.image %}
+                                                <img class="rounded-circle" src="{{ user.profile.image.url }}" width="25px" alt="">
+                                            {% else %}
+                                                <img class="rounded-circle" src="https://avatars.dicebear.com/api/avataaars/:seed.svg/{{ user.email }}.png" width="25px" alt="">
+                                            {% endif %}
                                             {{ post.author.username }}
                                             &nbsp;
                                             &nbsp;

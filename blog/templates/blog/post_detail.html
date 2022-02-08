@@ -1,4 +1,5 @@
 {% extends 'blog/index.html' %}
+{% load static %}
 {% load crispy_forms_tags %}
 {% block head_title %}
   {{ post.title }} - Blog
@@ -83,7 +84,11 @@
       {% for comment in post.comment_set.iterator %}
           <!-- Single Comment -->
           <div class="d-flex mb-4" id="comment-{{ comment.pk }}">
-            <img class="flex-shrink-0 rounded-circle" src="{{ comment.get_avatar_url }}"  alt="{{ comment.author }}" width="60px" height="60px">
+            {% if user.profile.image %}
+              <img class="flex-shrink-0 rounded-circle" src="{{ user.profile.image.url }}"  alt="{{ comment.author }}" width="60px" height="60px">
+            {% else %}
+              <img class="flex-shrink-0 rounded-circle" src="https://avatars.dicebear.com/api/avataaars/:seed.svg/{{ user.email }}.png" alt="{{ comment.author }}" width="60px" height="60px">
+            {% endif %}
             <div class="flex-grow-1 ms-3">
               {% if user.is_authenticated and comment.author == user %}
                 <div class="float-end">

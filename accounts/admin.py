@@ -7,6 +7,7 @@ from django.contrib.auth.models import User
 from .forms import UserForm
 from .models import Profile
 
+
 class ProfileInline(admin.StackedInline):
     model = Profile
     can_delete = False

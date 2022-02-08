@@ -11,7 +11,6 @@ class Profile(models.Model):
     name = models.CharField(max_length=15, null=True, blank=True)
     image = models.ImageField(upload_to='accounts/images/%Y/%m/%d/', blank=True)
 
-
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
     if created:
