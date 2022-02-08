@@ -1,61 +1,60 @@
 {% extends 'blog/index.html' %}
 
-{% block main_area %}
-
-    <!-- Newsletter post -->
-    <div class="container">
-      <div class="row">
-        {% if user.is_authenticated %}
-            {% if user.is_superuser or user.is_staff %}
-              <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                <a class="btn btn-primary btn-sm float-end" href="/blog/create_post/"
-                 role="button"><i class="fas fa-pen"></i>&nbsp;&nbsp;글쓰기 </a>
-              </div>
-            {% endif %}
-          {% endif %}
-      </div>
-      {% if post_list.exists %}
-      <div class="row">
-        {% for p in post_list %}
-          <div class="col-md-6">
-            <div class="card my-4" id="post-{{ p.pk }}" >
-              {% if p.head_image %}
-                <img class="card-img-top" src="{{ p.head_image.url }}" alt="{{ p }} head image" height="200">
-              {% else %}
-                <img class="card-img-top" src="https://picsum.photos/seed/{{ p.id }}" alt="random_image">
+  {% block main_area %}
+      <!-- Newsletter post -->
+      <div class="container">
+        <div class="row">
+          {% if user.is_authenticated %}
+              {% if user.is_superuser or user.is_staff %}
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                  <a class="btn btn-primary btn-sm float-end" href="/blog/create_post/"
+                   role="button"><i class="fas fa-pen"></i>&nbsp;&nbsp;글쓰기 </a>
+                </div>
               {% endif %}
-
-              <!-- card body -->
-              <div class="card-body">
-
-                <h5 class="card-title">{{ p.title | truncatechars:20 }}</h5>
-                {% if p.hook_text %}
-                  <p class="card-text" style="height:80px;">{{ p.hook_text | truncatewords:15 }}</p>
+            {% endif %}
+        </div>
+        {% if post_list.exists %}
+        <div class="row">
+          {% for p in post_list %}
+            <div class="col-md-6">
+              <div class="card my-4" id="post-{{ p.pk }}" >
+                {% if p.head_image %}
+                  <img class="card-img-top" src="{{ p.head_image.url }}" alt="{{ p }} head image" height="200">
+                {% else %}
+                  <img class="card-img-top" src="https://picsum.photos/seed/{{ p.id }}" alt="random_image">
                 {% endif %}
-                <!-- category -->
-                {% if p.category %}
-                <i class="fas fa-tags"></i>
-                  <a class="text-decoration-none" href="{{ tag.get_absolute_url }}"><span class="badge bg-secondary me-1">{{ p.category }}</span></a>
-                <br>
-                <br>
-                {% endif %}
-                <a href="{{ p.get_absolute_url }}" class="btn btn-primary mb-3" style="background-color:#02145b;border;border-color:#02145b;">더보기 &rarr;</a>
-              </div>
 
-              <!-- card footer -->
-              <div class="card-footer text-muted">
-                <b>작성 일시</b> : {{ p.created_at.date }}<br> <b>작성자</b> :
-                <a href="#">{{ p.author | upper }}</a>
-              </div>
+                <!-- card body -->
+                <div class="card-body">
 
+                  <h5 class="card-title">{{ p.title | truncatechars:20 }}</h5>
+                  {% if p.hook_text %}
+                    <p class="card-text" style="height:80px;">{{ p.hook_text | truncatewords:15 }}</p>
+                  {% endif %}
+                  <!-- category -->
+                  {% if p.category %}
+                  <i class="fas fa-tags"></i>
+                    <a class="text-decoration-none" href="{{ tag.get_absolute_url }}"><span class="badge bg-secondary me-1">{{ p.category }}</span></a>
+                  <br>
+                  <br>
+                  {% endif %}
+                  <a href="{{ p.get_absolute_url }}" class="btn btn-primary mb-3" style="background-color:#02145b;border;border-color:#02145b;">더보기 &rarr;</a>
+                </div>
+
+                <!-- card footer -->
+                <div class="card-footer text-muted">
+                  <b>작성 일시</b> : {{ p.created_at.date }}<br> <b>작성자</b> :
+                  <a href="#">{{ p.author | upper }}</a>
+                </div>
+
+              </div>
             </div>
-          </div>
-        {% endfor%}
+          {% endfor%}
+        </div>
+        {% else %}
+          <h3>아직 게시물이 없습니다.</h3>
+        {% endif %}
       </div>
-      {% else %}
-        <h3>아직 게시물이 없습니다.</h3>
-      {% endif %}
-    </div>
 
       {% if is_paginated %}
       <!-- Pagination -->
@@ -83,4 +82,8 @@
       {% endif %}
 
   {% endblock %}
+
+
+
+
 
