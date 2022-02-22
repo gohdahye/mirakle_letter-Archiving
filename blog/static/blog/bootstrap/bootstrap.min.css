@@ -313,6 +313,7 @@ tbody, td, tfoot, th, thead, tr {
   border-width: 0
 }
 
+
 label {
   display: inline-block
 }
@@ -1893,7 +1894,7 @@ progress {
 }
 
 .table>:not(:first-child) {
-  border-top: 2px solid currentColor
+  border-top: 0;
 }
 
 .caption-top {

@@ -2,30 +2,33 @@
 {% load static %}
 {% block content %}
 
-  <div class="container py-5">
-      <div class="row">
-        <div class="col mb-3">
-          <h2 class="container">
-            <b>뉴스 레터</b>
-            {% if search_info %}<small class="text-muted">{{ search_info }}</small>{% endif %}
-            {% if category %}<span class="badge bg-secondary">{{ category }}</span>{% endif %}
-            {% if tag %}<span class="badge bg-secondary"><i class="fas fa-tags"></i>{{ tag }} ({{ tag.post_set.count }})</span>{% endif %}
-          </h2>
-        </div>
+  <div class="d-flex justify-content-center bg-light" style="height:400px;width:100%;">
+    <div class="row d-inline-flex align-items-center">
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="내용을 검색하세요." id="search-input" style="width:650px;height:50px;">
+        <span class="input-group-append">
+          <button class="btn btn-secondary" type="button" onclick="searchPost();" style="height:50px;" ><i class="fas fa-search"></i></button>
+        </span>
       </div>
+    </div>
+  </div>
 
+  <div class="container py-5">
     {% if user.is_authenticated %}
-      <div class="row">
-        <div class="col-md-8 col-lg-9" id="main-area">
-          {% block main_area %}
-          {% endblock %}
-        </div>
-        <div class="col-md-4 col-lg-3">
-          {% block side_area %}
-          {% endblock %}
-        </div>
-      </div>
-      <!-- /.row -->
+
+    <div class="row">
+
+          <div class="col-md-8 col-lg-9" id="main-area">
+            {% block post_area %}
+            {% endblock %}
+          </div>
+          <div class="col-md-4 col-lg-3">
+            {% include 'blog/category.html' %}
+          </div>
+
+    </div>
+    <!-- /.row -->
+
     {% endif %}
   </div>
 

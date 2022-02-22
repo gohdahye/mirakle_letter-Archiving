@@ -1,7 +1,8 @@
 #landing-page{
     margin:0;
     padding:0;
-    background-image: url('/static/single_pages/images/back.jpeg');
+/*    background-image: url('/static/single_pages/images/back.jpeg'); */
+
     min-height:100%;
     background-position:center;
     background-size:cover;

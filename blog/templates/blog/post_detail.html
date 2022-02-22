@@ -5,30 +5,18 @@
   {{ post.title }} - Blog
 {% endblock %}
 
-  {% block big_main_area %}
+  {% block content %}
 
-    <div class="container" id="post-area">
-      {% if post.category %}
-        <h4><span class="badge bg-secondary float-end">{{ post.category }}</span></h4>
-      {% else %}
-        <h4><span class="badge bg-secondary float-end">미분류</span></h4>
-      {% endif %}
-      <!-- Title -->
-      <h1 class="mt-4">{{ post.title }}</h1>
-      <h5 class="text-muted">{{ post.hook_text }}</h5>
-      <!-- Author -->
-      <p class="lead">
-        <b>작성자 :</b>
-        <a href="#">{{ post.author | upper }}</a>
-      </p>
+    <div class="container" id="post-area" style="max-width:650px;padding:85px 30px 30px 30px">
+
        <!-- Edit/delete button -->
       {% if user.is_authenticated and user == post.author %}
       <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-        <a class="btn btn-danger btn-sm me-md-2" href="/blog/delete_post/{{ post.pk }}/" role="button"><i class="fas fa-pen"></i> 삭제</a>
+        <a class="btn btn-danger btn-sm" href="/blog/delete_post/{{ post.pk }}/" role="button"><i class="fas fa-pen"></i> 삭제</a>
         <a class="btn btn-info btn-sm" href="/blog/update_post/{{ post.pk }}/" role="button"><i class="fas fa-pen"></i> 수정</a>
       </div>
       {% endif %}
-      <hr>
+
       <!-- Post Content -->
       <p>{{ post.content | safe }}</p>
 

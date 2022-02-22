@@ -16,7 +16,7 @@ from django.db.models import Q
 class PostList(ListView):
     model = Post
     ordering = '-pk'
-    paginate_by = 4
+    paginate_by = 10
 
     def get_context_data(self, **kwargs):
         context = super(PostList, self).get_context_data()

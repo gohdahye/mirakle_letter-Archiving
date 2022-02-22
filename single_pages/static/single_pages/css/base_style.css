@@ -7,11 +7,11 @@ html,body{
 .wrapper{
     height:auto;
     min-height:100%;
-    padding-bottom:110px;
+    padding-bottom:150px;
 }
 
 footer {
-    height:110px;
+    height:150px;
     position:relative;
     transform:translateY(-100%);
     padding:15px;
