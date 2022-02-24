@@ -1,6 +1,6 @@
 
 {% load static %}
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container ">
             <a class="navbar-brand" href="/"><img src="{% static 'single_pages/images/black_logo.png' %}" width="134" height="26"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -9,19 +9,19 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item active">
-                  <a class="nav-link" href="/">홈</a>
+                  <a class="nav-link" href="/"></a>
                 </li>
                 {% if request.user.is_authenticated %}
                 <li class="nav-item">
-                  <a class="nav-link" href="{% url 'blog' %}">뉴스레터</a>
+                  <a class="nav-link" href=""></a>
                 </li>
                 {% else %}
                 <li class="nav-item">
-                  <a class="nav-link" href="{% url 'login' %}">뉴스레터</a>
+                  <a class="nav-link" href=""></a>
                 </li>
                 {% endif %}
                 <li class="nav-item">
-                  <a class="nav-link" href="{% url 'boardList' %}">게시판</a>
+                  <a class="nav-link" href="{% url 'login' %}"></a>
                 </li>
               </ul>
               <ul class="navbar-nav">

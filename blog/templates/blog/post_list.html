@@ -17,8 +17,7 @@
             {% if user.is_authenticated %}
                 {% if user.is_superuser or user.is_staff %}
                   <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                    <a class="btn btn-primary btn-sm float-end" style="background-color:#3F72AF;border;border-color:#3F72AF;" href="/blog/create_post/"
-                     role="button"><i class="fas fa-pen"></i>&nbsp;&nbsp;글쓰기 </a>
+                    <a class="btn btn-primary btn-sm float-end" style="background-color:#3F72AF;border;border-color:#3F72AF;" href="{% url 'create' %}" role="button"><i class="fas fa-pen"></i>&nbsp;&nbsp;글쓰기 </a>
                   </div>
                 {% endif %}
               {% endif %}

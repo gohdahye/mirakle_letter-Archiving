@@ -67,7 +67,7 @@ class PostCreate(LoginRequiredMixin, UserPassesTestMixin, CreateView):
             return response
 
         else:
-            return redirect('/blog/')
+            return redirect('/')
 
 
 class PostUpdate(LoginRequiredMixin, UpdateView):

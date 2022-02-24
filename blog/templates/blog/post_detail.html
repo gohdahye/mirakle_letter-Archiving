@@ -12,8 +12,8 @@
        <!-- Edit/delete button -->
       {% if user.is_authenticated and user == post.author %}
       <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-        <a class="btn btn-danger btn-sm" href="/blog/delete_post/{{ post.pk }}/" role="button"><i class="fas fa-pen"></i> 삭제</a>
-        <a class="btn btn-info btn-sm" href="/blog/update_post/{{ post.pk }}/" role="button"><i class="fas fa-pen"></i> 수정</a>
+        <a class="btn btn-danger btn-sm" href="/delete_post/{{ post.pk }}/" role="button"><i class="fas fa-pen"></i> 삭제</a>
+        <a class="btn btn-info btn-sm" href="/update_post/{{ post.pk }}/" role="button"><i class="fas fa-pen"></i> 수정</a>
       </div>
       {% endif %}
 
@@ -51,8 +51,8 @@
     </div>
 
     <!-- Comments Form -->
-    <div id="comment-area">
-        <div class="card my-4">
+    <div class="container p-3" id="comment-area">
+        <div class="card my-4" style="width:100%">
           <h5 class="card-header">댓글:</h5>
           <div class="card-body">
             {% if user.is_authenticated %}
@@ -84,7 +84,7 @@
                       <a role="button"
                          class="btn btn-sm btn-info"
                          id="comment-{{ comment.pk }}-update-btn"
-                         href="/blog/update_comment/{{ comment.pk }}/">
+                         href="/update_comment/{{ comment.pk }}/">
                           수정
                       </a>
                       <a role="button"
