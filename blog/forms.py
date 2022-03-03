@@ -1,3 +1,4 @@
+from django.forms import DateInput
 from django_summernote.widgets import SummernoteWidget
 
 from .models import Comment, Post
@@ -31,19 +32,9 @@ class PostForm(forms.ModelForm):
         })
     )
 
-    file_upload = forms.FileField(
-        label="첨부파일",
-        required=False,
-        widget=forms.ClearableFileInput(attrs={
-            'multiple': True,
-            'class': 'file-upload-native',
-            'accept': '.csv,.xlsx'
-        })
-    )
-
     class Meta:
         model = Post
-        fields = ['title', 'hook_text', 'content', 'head_image', 'file_upload', 'category']
+        fields = ['title', 'hook_text', 'content', 'head_image', 'category']
 
 
 class CommentForm(forms.ModelForm):

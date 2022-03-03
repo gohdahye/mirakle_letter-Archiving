@@ -1,3 +1,5 @@
+import datetime
+
 from django.contrib.auth import get_user_model
 from django.db import models
 from django.contrib.auth.models import User
@@ -44,6 +46,8 @@ class Post(models.Model):
 
     created_at = models.DateTimeField(auto_now=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+    pub_date = models.DateTimeField('date published', default=datetime.datetime.now)
 
     author = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
 
