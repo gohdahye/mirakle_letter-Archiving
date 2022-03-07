@@ -10,19 +10,7 @@
       {% csrf_token %}
       {{ form | crispy }}
       {{ form.media }}
-      <div class="mb-3 form-group">
-        <label for="datepicker" class="col-sm-1 col-form-label">발행일</label>
-          <div class="col-sm-4">
-              <div class="input-group date" id="datepicker">
-                  <input type="text" class="form-control">
-                  <span class="input-group-append">
-                    <span class="input-group-text bg-white d-block">
-                        <i class="fa fa-calendar"></i>
-                    </span>
-                  </span>
-              </div>
-          </div>
-      </div>
+
       <div class="mb-3">
         <label for="id_tags_str" class="form-label">Tags</label>
         <input type="text" class="form-control" name="tags_str" id="id_tags_str" class="textinput textInput from-control">
