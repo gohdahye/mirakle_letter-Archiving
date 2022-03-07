@@ -14,8 +14,7 @@ from django.db.models import Q
 
 
 class PostList(ListView):
-    model = Post
-    ordering = '-pk'
+    queryset = Post.objects.order_by('-pub_date')
     paginate_by = 10
 
     def get_context_data(self, **kwargs):

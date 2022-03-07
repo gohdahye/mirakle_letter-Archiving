@@ -43,7 +43,7 @@
                           {% if p.hook_text %}
                             <p class="card-text">{{ p.hook_text | truncatechars:85 }}</p>
                           {% endif %}
-                            <p class="card-text"><small class="text-muted">{{ p.created_at | date:"Y년 m월 d일" }}</small></p>
+                            <p class="card-text"><small class="text-muted">{{ p.pub_date | date:"Y년 m월 d일" }}</small></p>
                         </div>
                     </div>
                   </div>
@@ -57,28 +57,28 @@
         </div>
 
         {% if is_paginated %}
-        <!-- Pagination -->
-        <ul class="pagination justify-content-center py-5 mb-4">
-          {% if page_obj.has_next %}
-          <li class="page-item">
-            <a class="page-link" href="?page={{ page_obj.next_page_number }}">&larr; Older</a>
-          </li>
-          {% else %}
-          <li class="page-item disabled">
-            <a class="page-link" href="#">&larr; Older</a>
-          </li>
-          {% endif %}
+          <!-- Pagination -->
+          <ul class="pagination justify-content-center py-5 mb-4">
+            {% if page_obj.has_next %}
+            <li class="page-item">
+              <a class="page-link" href="?page={{ page_obj.next_page_number }}">&larr; Older</a>
+            </li>
+            {% else %}
+            <li class="page-item disabled">
+              <a class="page-link" href="#">&larr; Older</a>
+            </li>
+            {% endif %}
 
-          {% if page_obj.has_previous %}
-          <li class="page-item">
-            <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Newer &rarr;</a>
-          </li>
-          {% else %}
-          <li class="page-item disabled">
-            <a class="page-link" href="#">Newer &rarr;</a>
-          </li>
-          {% endif %}
-        </ul>
+            {% if page_obj.has_previous %}
+            <li class="page-item">
+              <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Newer &rarr;</a>
+            </li>
+            {% else %}
+            <li class="page-item disabled">
+              <a class="page-link" href="#">Newer &rarr;</a>
+            </li>
+            {% endif %}
+          </ul>
         {% endif %}
 
   {% endblock %}

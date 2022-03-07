@@ -55,6 +55,7 @@ class Post(models.Model):
 
     tags = models.ManyToManyField(Tag, blank=True)
 
+
     def __str__(self):
         return f'[{self.pk}]{self.title} :: {self.author}'
 

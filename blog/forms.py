@@ -32,9 +32,15 @@ class PostForm(forms.ModelForm):
         })
     )
 
+    pub_date = forms.DateField(
+        label="발행일",
+        required=True,
+        widget=DateInput(attrs={'type':'date'})
+    )
+
     class Meta:
         model = Post
-        fields = ['title', 'hook_text', 'content', 'head_image', 'category']
+        fields = ['title', 'hook_text', 'content', 'head_image', 'pub_date',  'category']
 
 
 class CommentForm(forms.ModelForm):
