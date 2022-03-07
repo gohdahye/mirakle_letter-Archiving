@@ -35,7 +35,10 @@ class PostForm(forms.ModelForm):
     pub_date = forms.DateField(
         label="발행일",
         required=True,
-        widget=DateInput(attrs={'type':'date'})
+        widget=DateInput(attrs={
+            'type':'date',
+            'style':'max-width:250px'
+        })
     )
 
     class Meta:
