@@ -18,3 +18,9 @@ ul, li{
 .wide-comment {
     height:150px;
 }
+
+.btn-sm{
+    text-decoration:none;
+    color:black;
+    padding-left:0;
+}
