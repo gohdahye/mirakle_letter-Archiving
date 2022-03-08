@@ -14,50 +14,34 @@
   <div class="row">
     <div class="col" id="main-area">
         <!-- Newsletter post -->
-        <div class="container">
-          <div class="row">
-            {% if user.is_authenticated %}
-                {% if user.is_superuser or user.is_staff %}
-                  <div class="d-grid gap-2 d-md-flex justify-content-md-end" style="padding:0 0 10px 0">
-                    <a class="btn btn-primary btn-sm float-end" style="background-color:#3F72AF;border;border-color:#3F72AF;" href="/blog/create_post/"
-                     role="button"><i class="fas fa-pen"></i>&nbsp;&nbsp;글쓰기 </a>
-                  </div>
-                {% endif %}
-              {% endif %}
-          </div>
-          {% if post_list.exists %}
-          <div class="row  ">
-            {% for p in post_list %}
-              <div class="box">
-                <div class="card mb-3" id="post-{{ p.pk }}" style="height:460px;width:18rem;" >
-                  {% if p.head_image %}
-                    <img class="card-img-top border-bottom" src="{{ p.head_image.url }}" alt="{{ p }} head image" height="200">
-                  {% else %}
-                    <img class="card-img-top border-bottom" src="https://picsum.photos/seed/{{ p.id }}" alt="random_image" height="200">
-                  {% endif %}
-                  <!-- card body -->
-                  <div class="card-body" >
-                    <h6 class="card-title" style="font-weight:bold;">{{ p.title | truncatechars:20 }}</h6>
-                    {% if p.hook_text %}
-                      <p class="card-text" style="height:75px;">{{ p.hook_text | truncatechars:39 }}</p>
-                    {% endif %}
-                    <!-- category -->
-                    {% if p.category %}
-                    <i class="fas fa-tags"></i>
-                      <a class="text-decoration-none" href="{{ tag.get_absolute_url }}"><span class="badge bg-secondary me-1">{{ p.category }}</span></a>
-                    <br>
-                    <br>
-                    {% endif %}
-                    <a href="{{ p.get_absolute_url }}" id="c-posi" class=" btn btn-primary mb-3" style="background-color:#112D4E;border;border-color:#112D4E;position:absolute;top:385px;">더보기 &rarr;</a>
+        <div class="container" style="margin:0;padding:0;">
+          <div class="list-group mb-4" id="myDiv">
+             {% for p in post_list %}
+            <a href="{{ p.get_absolute_url }}" class="list-group-item border-0">
+              <div class="card border-0"  style="max-width:800px;" >
+                  <div class="row g-0">
+                    <div class="col-md-3" style="margin-right:15px;width:200px;">
+                      {% if p.head_image %}
+                        <img class="img-fluid rounded border" src="{{ p.head_image.url }}" alt="{{ p }} head image" style="width:100%; height:140px;">
+                      {% else %}
+                        <img class="img rounded border" src="https://picsum.photos/seed/{{ p.id }}" alt="random_image" width="180" height="120">
+                      {% endif %}
+                    </div>
+                    <div class="col-md-8">
+                        <!-- card body -->
+                        <div class="card-body" style="padding-left:0;" >
+                          <h6 class="card-title" style="font-weight:bold;">{{ p.title | truncatechars:50 }}</h6>
+                          {% if p.hook_text %}
+                            <p class="card-text">{{ p.hook_text | truncatechars:85 }}</p>
+                          {% endif %}
+                            <p class="card-text"><small class="text-muted">{{ p.pub_date | date:"Y년 m월 d일" }}</small></p>
+                        </div>
+                    </div>
                   </div>
                 </div>
-              </div>
+            </a>
             {% endfor%}
           </div>
-          {% else %}
-            <h3>아직 게시물이 없습니다.</h3>
-          {% endif %}
-        </div>
 
         {% if is_paginated %}
         <!-- Pagination -->
