@@ -75,11 +75,11 @@
                       <p class="card-text" style="height:75px;">{{ p.hook_text | truncatechars:39 }}</p>
                     {% endif %}
                     <!-- category -->
-                    {% if p.category %}
+                    {% if p.tags.exists %}
                     <i class="fas fa-tags"></i>
-                      <a class="text-decoration-none" href="{{ tag.get_absolute_url }}"><span class="badge bg-secondary me-1">{{ p.category }}</span></a>
-                    <br>
-                    <br>
+                    {% for tag in p.tags.iterator %}
+                      <a class="text-decoration-none" href="{{ tag.get_absolute_url }}"><span class="badge bg-secondary me-1">{{ tag }}</span></a>
+                    {% endfor %}
                     {% endif %}
                     <a href="{{ p.get_absolute_url }}" id="c-posi" class=" btn btn-primary mb-3" style="background-color:#112D4E;border;border-color:#112D4E;position:absolute;top:365px;right:20px;">더보기 &rarr;</a>
                   </div>
