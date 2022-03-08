@@ -12,14 +12,13 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-md-8 col-lg-9" id="main-area">
-      {% block main_area %}
+    <div class="col" id="main-area">
         <!-- Newsletter post -->
         <div class="container">
           <div class="row">
             {% if user.is_authenticated %}
                 {% if user.is_superuser or user.is_staff %}
-                  <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                  <div class="d-grid gap-2 d-md-flex justify-content-md-end" style="padding:0 0 10px 0">
                     <a class="btn btn-primary btn-sm float-end" style="background-color:#3F72AF;border;border-color:#3F72AF;" href="/blog/create_post/"
                      role="button"><i class="fas fa-pen"></i>&nbsp;&nbsp;글쓰기 </a>
                   </div>
@@ -27,10 +26,10 @@
               {% endif %}
           </div>
           {% if post_list.exists %}
-          <div class="row ">
+          <div class="row  ">
             {% for p in post_list %}
-              <div class="col-md-4">
-                <div class="card my-4" id="post-{{ p.pk }}" style="height:460px;" >
+              <div class="box">
+                <div class="card mb-3" id="post-{{ p.pk }}" style="height:460px;width:18rem;" >
                   {% if p.head_image %}
                     <img class="card-img-top border-bottom" src="{{ p.head_image.url }}" alt="{{ p }} head image" height="200">
                   {% else %}
@@ -38,10 +37,9 @@
                   {% endif %}
                   <!-- card body -->
                   <div class="card-body" >
-
-                    <h6 class="card-title" style="font-weight:bold;">{{ p.title | truncatechars:23 }}</h6>
+                    <h6 class="card-title" style="font-weight:bold;">{{ p.title | truncatechars:20 }}</h6>
                     {% if p.hook_text %}
-                      <p class="card-text" style="height:75px;">{{ p.hook_text | truncatewords:10 }}</p>
+                      <p class="card-text" style="height:75px;">{{ p.hook_text | truncatechars:39 }}</p>
                     {% endif %}
                     <!-- category -->
                     {% if p.category %}
@@ -50,11 +48,8 @@
                     <br>
                     <br>
                     {% endif %}
-                    <a href="{{ p.get_absolute_url }}" class="btn btn-primary mb-3" style="background-color:#112D4E;border;border-color:#112D4E;">더보기 &rarr;</a>
+                    <a href="{{ p.get_absolute_url }}" id="c-posi" class=" btn btn-primary mb-3" style="background-color:#112D4E;border;border-color:#112D4E;position:absolute;top:385px;">더보기 &rarr;</a>
                   </div>
-
-
-
                 </div>
               </div>
             {% endfor%}
@@ -88,14 +83,12 @@
           {% endif %}
         </ul>
         {% endif %}
-      {% endblock %}
+
+
     </div>
-    <div class="col-md-4 col-lg-3">
-      {% include 'blog/search.html' %}
-    </div>
+
   </div>
   {% endblock %}
-
 
 
 

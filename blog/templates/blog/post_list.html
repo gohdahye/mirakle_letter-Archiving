@@ -4,7 +4,7 @@
 
         <!-- post title -->
         <div class="container">
-          <div class="row mb-3">
+          <div class="row mb-3 ps-3">
             <div class="col m-3">
               <h2 class="container ps-4">
                 <h3 class="h3 mb-3">뉴스레터</h3>
@@ -14,20 +14,26 @@
               </h2>
             </div>
             <!-- write button -->
-            {% if user.is_authenticated %}
+              {% if user.is_authenticated %}
                 {% if user.is_superuser or user.is_staff %}
-                  <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                  <div class="d-grid gap-2 d-md-flex justify-content-md-end mb-2">
                     <a class="btn btn-primary btn-sm float-end" style="background-color:#3F72AF;border;border-color:#3F72AF;" href="{% url 'create' %}" role="button"><i class="fas fa-pen"></i>&nbsp;&nbsp;글쓰기 </a>
                   </div>
                 {% endif %}
               {% endif %}
+              <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                <a class="btn btn-sm float-start bg-light" role="button" onclick="myListBtn()"><i class="fas fa-list fa-lg" ></i></a>
+                <a class="btn btn-sm float-start bg-light" role="button" onclick="myListBtn2()"><i class="fas fa-th-large fa-lg"></i></a>
+              </div>
           </div>
           <!-- Newsletter post -->
           {% if post_list.exists %}
-          <div class="list-group mb-4">
-            {% for p in post_list %}
+
+
+          <div class="list-group mb-4" id="myDiv">
+             {% for p in post_list %}
             <a href="{{ p.get_absolute_url }}" class="list-group-item border-0">
-              <div class="card border-0" id="post-{{ p.pk }}" style="max-width:800px;" >
+              <div class="card border-0"  style="max-width:800px;" >
                   <div class="row g-0">
                     <div class="col-md-3" style="margin-right:15px;width:200px;">
                       {% if p.head_image %}
@@ -49,6 +55,35 @@
                   </div>
                 </div>
             </a>
+            {% endfor%}
+          </div>
+
+          <div class="row" id="myDiv2">
+            {% for p in post_list %}
+              <div class="col">
+                <div class="card mb-3"  style="height:460px;width:18rem;" >
+                  {% if p.head_image %}
+                    <img class="card-img-top border-bottom" src="{{ p.head_image.url }}" alt="{{ p }} head image" height="200">
+                  {% else %}
+                    <img class="card-img-top border-bottom" src="https://picsum.photos/seed/{{ p.id }}" alt="random_image" height="200">
+                  {% endif %}
+                  <!-- card body -->
+                  <div class="card-body" >
+                    <h6 class="card-title" style="font-weight:bold;">{{ p.title | truncatechars:20 }}</h6>
+                    {% if p.hook_text %}
+                      <p class="card-text" style="height:75px;">{{ p.hook_text | truncatechars:39 }}</p>
+                    {% endif %}
+                    <!-- category -->
+                    {% if p.category %}
+                    <i class="fas fa-tags"></i>
+                      <a class="text-decoration-none" href="{{ tag.get_absolute_url }}"><span class="badge bg-secondary me-1">{{ p.category }}</span></a>
+                    <br>
+                    <br>
+                    {% endif %}
+                    <a href="{{ p.get_absolute_url }}" id="c-posi" class=" btn btn-primary mb-3" style="background-color:#112D4E;border;border-color:#112D4E;position:absolute;top:385px;">더보기 &rarr;</a>
+                  </div>
+                </div>
+              </div>
             {% endfor%}
           </div>
           {% else %}
