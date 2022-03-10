@@ -8,6 +8,7 @@
   {% block content %}
     {% if user.is_authenticated and user == post.author %}
     <div class="container my-5">
+      <h4 class="mb-4"><small>{{ post.title }}</small></h4>
       <div class="d-flex align-items-center">
         <img class="flex-shrink-0 rounded-circle" src="{% static 'blog/images/user.png' %}"  alt="{{ comment.author }}" width="60px" height="60px">
         <!-- Edit/delete button -->

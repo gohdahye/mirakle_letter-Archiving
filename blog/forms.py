@@ -4,6 +4,8 @@ from django_summernote.widgets import SummernoteWidget
 from .models import Comment, Post
 from django import forms
 
+from .widgets import CounterTextInput
+
 
 class PostForm(forms.ModelForm):
     title = forms.CharField(
@@ -14,6 +16,7 @@ class PostForm(forms.ModelForm):
     hook_text = forms.CharField(
         label="소제목",
         required=True,
+        widget=CounterTextInput,
     )
 
     content = forms.CharField(
@@ -44,6 +47,7 @@ class PostForm(forms.ModelForm):
     class Meta:
         model = Post
         fields = ['title', 'hook_text', 'content', 'head_image', 'pub_date',  'category']
+
 
 
 class CommentForm(forms.ModelForm):

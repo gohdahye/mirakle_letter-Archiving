@@ -18,14 +18,14 @@
           {% if user.is_authenticated %}
             {% if user.is_superuser or user.is_staff %}
               <div class="d-grid gap-2 d-md-flex justify-content-md-end mb-2">
-                <a class="btn btn-primary btn-sm float-end" style="background-color:#3F72AF;border;border-color:#3F72AF;" href="{% url 'create' %}" role="button"><i class="fas fa-pen"></i>&nbsp;&nbsp;글쓰기 </a>
+                <a class="btn btn-primary float-end" style="background-color:#3F72AF;border;border-color:#3F72AF;color:white;" href="{% url 'create' %}" role="button"><i class="fas fa-pen"></i>&nbsp;&nbsp;글쓰기 </a>
               </div>
             {% endif %}
           {% endif %}
           <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-            <a class="btn btn-sm float-start bg-light" role="button" onclick="myListBtn()"><i class="fas fa-list fa-lg" ></i></a>
-            <a class="btn btn-sm float-start bg-light" role="button" onclick="myListBtn2()"><i class="fas fa-th-large fa-lg"></i></a>
-            <a class="btn btn-sm float-start bg-light" role="button" onclick="myListBtn3()"><i class="fas fa-window-maximize fa-lg"></i></a>
+            <a class="btn float-start bg-light" role="button" onclick="myListBtn()"><i class="fas fa-list fa-lg" ></i></a>
+            <a class="btn float-start bg-light" role="button" onclick="myListBtn2()"><i class="fas fa-th-large fa-lg"></i></a>
+            <a class="btn float-start bg-light" role="button" onclick="myListBtn3()"><i class="fas fa-window-maximize fa-lg"></i></a>
           </div>
       </div>
 
@@ -73,7 +73,7 @@
                   <div class="card-body" >
                     <h6 class="card-title" style="font-weight:bold;">{{ p.title | truncatechars:20 }}</h6>
                     {% if p.hook_text %}
-                      <p class="card-text" style="height:75px;">{{ p.hook_text | truncatechars:39 }}</p>
+                      <p class="card-text" style="height:75px;">{{ p.hook_text | truncatechars:56 }}</p>
                     {% endif %}
                     <!-- category -->
                     {% if p.tags.exists %}
@@ -105,7 +105,7 @@
                   <div class="card-body" >
                     <h6 class="card-title" style="font-weight:bold;">{{ p.title | truncatechars:40 }}</h6>
                     {% if p.hook_text %}
-                      <p class="card-text" style="height:75px;">{{ p.hook_text | truncatechars:100 }}</p>
+                      <p class="card-text" style="height:75px;">{{ p.hook_text }}</p>
                     {% endif %}
                     <!-- category -->
                     {% if p.tags.exists %}
