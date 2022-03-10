@@ -9,9 +9,9 @@
         <div class="col m-3">
           <h2 class="container ps-4">
             <h3 class="h2 mb-3">뉴스레터</h3>
-            {% if search_info %}<small class="text-muted">{{ search_info }}</small>{% endif %}
-            {% if category %}<span class="badge bg-secondary">{{ category }}</span>{% endif %}
-            {% if tag %}<span class="badge bg-secondary"><i class="fas fa-tags"></i>{{ tag }} ({{ tag.post_set.count }})</span>{% endif %}
+            {% if search_info %}<h3><small class="text-muted">{{ search_info }}</small></h3>{% endif %}
+            {% if category %}<h3><span class="badge bg-secondary">{{ category }}</span></h3>{% endif %}
+            {% if tag %}<h3><span class="badge bg-secondary"><i class="fas fa-tags"></i>{{ tag }} ({{ tag.post_set.count }})</span></h3>{% endif %}
           </h2>
         </div>
         <!-- write button -->
@@ -125,7 +125,7 @@
             {% endfor%}
           </div>
       {% else %}
-        <h3>아직 게시물이 없습니다.</h3>
+        <div class="container" style="height:600px;"><h3>아직 게시물이 없습니다.</h3></div>
       {% endif %}
     </div>
 
