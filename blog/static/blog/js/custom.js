@@ -1,6 +1,4 @@
 function searchPost(){
-    var drop = document.getElementById("filter");
-
     let searchValue = document.getElementById('search-input').value.trim();
     if(searchValue.length > 1){
 

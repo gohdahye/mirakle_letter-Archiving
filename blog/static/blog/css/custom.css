@@ -1,9 +1,13 @@
 .table>:not(:first-child) {
   border-top: 0;
 }
+body {
+    font-family : 'Noto Sans KR', sans-serif;
+}
+
 
 .img-bg{
-  background-image:url("/static/blog/images/mk-bg.jpg");
+  background-image:url("/static/blog/images/morning.png");
   background-position:center;
   background-size:cover;
 

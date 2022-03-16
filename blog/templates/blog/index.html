@@ -2,15 +2,29 @@
 {% load static %}
 {% block content %}
 
-  <div class="img-bg d-flex justify-content-center bg-light" style="height:400px;" >
-    <div class="col-lg-5 d-flex align-items-center">
-        <div class="input-group input-group-lg">
-            <input type="text" class="form-control"  id="search-input" name="search"  placeholder="내용을 검색하세요."  aria-describedby="inputGroup-sizing-lg">
-            <span class="input-group-append">
-                <button class="btn btn-secondary" id="btn_search" style="height:50px;" ><i class="fas fa-search"></i></button>
-            </span>
+  <div class="d-flex" style="height:500px;background-color:#DBE2EF;" >
+
+    <div class="container py-5" style="">
+        <div class="row">
+            <div class="col-lg-9">
+                <h3 class="h3 mb-3" style="font-weight:bold;color:#15213B;">"혁신하는 이들을 위한" 미라클레터입니다 📧</h3>
+                <p class="mb-3">매경미디어그룹에서  테크 트렌드, 글로벌 트렌드, 재테크 소식, 실리콘밸리 현장 소식을 빠르게 담아,<br> 주 3회 오전 6~7시에 이메일로 보내드려요!<br>미라클 모닝! 같이 시작해봐요!🏃</p>
+                <div class="float-start py-4">
+                    <button class="btn " style="background-color:#15213B; color:white;" onclick="location.href='https://page.stibee.com/subscriptions/33271'" >구독 하러가기</button>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <img src="{% static 'blog/images/phone.png' %}" width="90%" height="90%">
+            </div>
+
         </div>
+
+
     </div>
+
+
+
+
   </div>
 
   <div class="container py-5">
