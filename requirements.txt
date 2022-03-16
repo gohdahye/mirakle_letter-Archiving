@@ -13,14 +13,17 @@ defusedxml==0.7.1
 diff-match-patch==20200713
 Django==4.0
 django-allauth==0.44.0
+django-autocomplete-light==3.9.1
 django-crispy-forms==1.13.0
 django-extensions==3.1.2
+django-filter==21.1
 django-import-export==2.7.1
 django-markdownx==3.0.1
 django-summernote==0.8.20.0
 et-xmlfile==1.1.0
 gunicorn==20.1.0
 idna==2.10
+ipdb==0.13.9
 ipython==7.22.0
 ipython-genutils==0.2.0
 jedi==0.18.0
@@ -50,6 +53,7 @@ six==1.15.0
 soupsieve==2.2.1
 sqlparse==0.4.1
 tablib==3.2.0
+toml==0.10.2
 traitlets==5.0.5
 urllib3==1.26.4
 wcwidth==0.2.5

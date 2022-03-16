@@ -1,17 +1,19 @@
+<div class="img-bg d-flex justify-content-center bg-light" style="height:400px;" >
+    <div class="col-lg-5 d-flex align-items-center">
+        <div class="input-group input-group-lg">
+            <div class="input-group" style="width:25%;">
+                <select class="form-select ct" value="{{ ct|default_if_none:'' }}" name="category" aria-label="Default select example">
+                    <option selected>전체</option>
+                    {% for category in categories %}
+                    <option value="{{ category.id }}">{{ category }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <input type="text" class="form-control kw" value="{{ kw|default_if_none:'' }}" id="search-input" name="search"  placeholder="내용을 검색하세요."  aria-describedby="inputGroup-sizing-lg">
+            <span class="input-group-append">
+                <button class="btn btn-secondary" id="btn_search" style="height:50px;" ><i class="fas fa-search"></i></button>
+            </span>
 
-{% block search %}
-
-<!-- Search Widget -->
-<div class="card my-4">
-  <h5 class="card-header">검색</h5>
-  <div class="card-body">
-    <div class="input-group">
-      <input type="text" class="form-control" placeholder="내용을 검색하세요." id="search-input">
-      <span class="input-group-append">
-        <button class="btn btn-secondary" type="button" onclick="searchPost();"><i class="fas fa-search"></i></button>
-      </span>
+        </div>
     </div>
   </div>
-</div>
-
-{% endblock %}

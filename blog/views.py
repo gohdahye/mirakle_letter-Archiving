@@ -1,3 +1,5 @@
+from django.contrib import messages
+from django.core.paginator import Paginator
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
@@ -8,7 +10,8 @@ from .models import Post, Category, Tag, Comment
 from django.core.exceptions import PermissionDenied
 from .forms import CommentForm, PostForm
 from django.db.models import Q
-
+import urllib
+from .filters import PostFilter
 
 # Create your views here.
 

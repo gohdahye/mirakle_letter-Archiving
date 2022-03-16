@@ -56,6 +56,8 @@
         </div>
         <!-- Footer -->
         {% include 'single_pages/footer.html' %}
+
+
         <!-- list btn js -->
         <script>
         function myListBtn(){
@@ -92,28 +94,7 @@
         }
         </script>
         <!-- search js -->
-        <script>
-            function searchPost(){
-                var drop = document.getElementById("filter");
-
-                let searchValue = document.getElementById('search-input').value.trim();
-                if(searchValue.length > 1){
-
-                    location.href="/search/" + searchValue + "/";
-
-                }
-                else{
-                  alert('검색어('+ searchValue +')가 너무 짧습니다.');
-                }
-            };
-            document.getElementById('search-input').addEventListener('keyup', function(event){
-                if(event.key === 'Enter'){
-                  searchPost();
-                }
-            });
-        </script>
-
-
+        <script src="{% static 'blog/js/custom.js' %}"></script>
     </body>
 
 </html>

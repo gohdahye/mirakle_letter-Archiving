@@ -4,27 +4,25 @@
 
   <div class="img-bg d-flex justify-content-center bg-light" style="height:400px;" >
     <div class="col-lg-5 d-flex align-items-center">
-      <div class="input-group input-group-lg">
-        <input type="text" class="form-control" placeholder="내용을 검색하세요." id="search-input" aria-describedby="inputGroup-sizing-lg">
-        <span class="input-group-append">
-          <button class="btn btn-secondary" type="button" onclick="searchPost();" style="height:50px;" ><i class="fas fa-search"></i></button>
-        </span>
-      </div>
+        <div class="input-group input-group-lg">
+            <input type="text" class="form-control"  id="search-input" name="search"  placeholder="내용을 검색하세요."  aria-describedby="inputGroup-sizing-lg">
+            <span class="input-group-append">
+                <button class="btn btn-secondary" id="btn_search" style="height:50px;" ><i class="fas fa-search"></i></button>
+            </span>
+        </div>
     </div>
   </div>
 
   <div class="container py-5">
+
     {% if user.is_authenticated %}
-
     <div class="row">
-
+          <div class="col-md-4 col-lg-3">
+            {% include 'blog/category.html' %}
+          </div>
           <div class="col-md-8 col-lg-9" id="main-area">
             {% block post_area %}
             {% endblock %}
-
-          </div>
-          <div class="col-md-4 col-lg-3">
-            {% include 'blog/category.html' %}
           </div>
     </div>
     <!-- /.row -->

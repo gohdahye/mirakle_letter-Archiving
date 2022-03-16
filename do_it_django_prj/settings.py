@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'markdownx',
     'django.contrib.sites',
     'django_summernote',
+    'django_filters',
 
     'blog',
     'single_pages',

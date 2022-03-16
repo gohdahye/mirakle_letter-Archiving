@@ -1,14 +1,13 @@
 {% extends 'blog/index.html' %}
 
   {% block post_area %}
-
-
     <div class="container">
       <!-- post title -->
       <div class="row mb-3 ps-3">
-        <div class="col m-3">
+        <div class="col">
           <h2 class="container ps-4">
-            <h3 class="h2 mb-3">뉴스레터</h3>
+            {% if categoriess %}<h3>{{ categoriess }}</h3>{% endif %}
+            <h3 class="h2">뉴스레터</h3>
             {% if search_info %}<h3><small class="text-muted">{{ search_info }}</small></h3>{% endif %}
             {% if category %}<h3><span class="badge bg-secondary">{{ category }}</span></h3>{% endif %}
             {% if tag %}<h3><span class="badge bg-secondary"><i class="fas fa-tags"></i>{{ tag }} ({{ tag.post_set.count }})</span></h3>{% endif %}
@@ -22,7 +21,7 @@
               </div>
             {% endif %}
           {% endif %}
-          <div class="d-flex flex-nowrap">
+          <div class="d-flex flex-nowrap gap-2">
             <a class="order-1 btn float-start bg-light" role="button" onclick="myListBtn()"><i class="fas fa-list fa-lg" ></i></a>
             <a class="order-2 btn float-start bg-light" role="button" onclick="myListBtn2()"><i class="fas fa-th-large fa-lg"></i></a>
             <a class="order-3 btn float-start bg-light" role="button" onclick="myListBtn3()"><i class="fas fa-window-maximize fa-lg"></i></a>
@@ -62,7 +61,7 @@
           <div class="box" id="myDiv2" style="display:none;">
             <div class="row">
             {% for p in post_list %}
-              <div class="col-4">
+              <div class="col-lg-4">
                 <div class="card mb-3"  style="height:460px;width:18rem;" >
                   {% if p.head_image %}
                     <img class="card-img-top border-bottom" src="{{ p.head_image.url }}" alt="{{ p }} head image" height="200">
@@ -78,9 +77,9 @@
                     <!-- category -->
                     {% if p.tags.exists %}
                     <i class="fas fa-tags"></i>
-                    {% for tag in p.tags.iterator %}
-                      <a class="text-decoration-none" href="{{ tag.get_absolute_url }}"><span class="badge bg-secondary me-1">{{ tag }}</span></a>
-                    {% endfor %}
+                      {% for tag in p.tags.iterator %}
+                        <a class="text-decoration-none" href="{{ tag.get_absolute_url }}"><span class="badge bg-secondary me-1">{{ tag }}</span></a>
+                      {% endfor %}
                     {% endif %}
                     <a href="{{ p.get_absolute_url }}" class="btn btn-primary mb-3" style="background-color:#112D4E;border;border-color:#112D4E;position:absolute;top:365px;right:20px;">더보기 &rarr;</a>
                   </div>
