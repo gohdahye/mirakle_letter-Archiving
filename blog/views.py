@@ -10,8 +10,6 @@ from .models import Post, Category, Tag, Comment
 from django.core.exceptions import PermissionDenied
 from .forms import CommentForm, PostForm
 from django.db.models import Q
-import urllib
-from .filters import PostFilter
 
 # Create your views here.
 
