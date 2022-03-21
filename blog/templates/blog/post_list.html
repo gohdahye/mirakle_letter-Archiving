@@ -3,25 +3,35 @@
   {% block post_area %}
     <div class="container">
       <!-- post title -->
-      <div class="row mb-3 ps-3">
+      <div class="row ps-3">
         <div class="col">
-          <h2 class="container ps-4">
+          <h2 class="container ps-3" >
             {% if categoriess %}<h3>{{ categoriess }}</h3>{% endif %}
-            <h3 class="h2 mb-3" style="font-weight:500;">뉴스레터</h3>
+            <div class="row">
+              <div class="col" style="padding:0;">
+                <h3 class="h2 justify-content-start mb-2" style="font-weight:500;">뉴스레터</h3>
+              </div>
+              <div class="col" style="padding:0;">
+                <!-- write button -->
+                {% if user.is_authenticated %}
+                  {% if user.is_superuser or user.is_staff %}
+                    <div class="d-flex justify-content-end mb-2">
+                      <a class="btn btn-primary float-end" style="background-color:#606470;border;border-color:#606470;color:white;" href="{% url 'create' %}" role="button"><i class="fas fa-pen"></i>&nbsp;&nbsp;글쓰기 </a>
+                    </div>
+                  {% endif %}
+                {% endif %}
+              </div>
+            </div>
+
             {% if search_info %}<h3><small class="text-muted">{{ search_info }}</small></h3>{% endif %}
             {% if category %}<h3><span class="badge bg-secondary">{{ category }}</span></h3>{% endif %}
             {% if tag %}<h3><span class="badge bg-secondary"><i class="fas fa-tags"></i>{{ tag }} ({{ tag.post_set.count }})</span></h3>{% endif %}
+
           </h2>
         </div>
-        <!-- write button -->
-          {% if user.is_authenticated %}
-            {% if user.is_superuser or user.is_staff %}
-              <div class="d-flex justify-content-end mb-2">
-                <a class="btn btn-primary float-end" style="background-color:#606470;border;border-color:#606470;color:white;" href="{% url 'create' %}" role="button"><i class="fas fa-pen"></i>&nbsp;&nbsp;글쓰기 </a>
-              </div>
-            {% endif %}
-          {% endif %}
-          <div class="d-flex flex-nowrap gap-2 justify-content-end">
+
+          <!-- view mode button -->
+          <div class="d-flex flex-nowrap gap-2 justify-content-end pe-4">
             <a class="order-1 btn float-start bg-light" role="button" onclick="myListBtn()"><i class="fas fa-list fa-lg" ></i></a>
             <a class="order-2 btn float-start bg-light" role="button" onclick="myListBtn2()"><i class="fas fa-th-large fa-lg"></i></a>
             <a class="order-3 btn float-start bg-light" role="button" onclick="myListBtn3()"><i class="fas fa-window-maximize fa-lg"></i></a>
