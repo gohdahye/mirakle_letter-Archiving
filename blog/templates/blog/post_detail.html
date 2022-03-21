@@ -6,22 +6,22 @@
 {% endblock %}
 
   {% block content %}
-    {% if user.is_authenticated and user == post.author %}
+
     <div class="container my-5">
-      <h4 class="mb-4"><small>{{ post.title }}</small></h4>
-      <div class="d-flex align-items-center">
-        <img class="flex-shrink-0 rounded-circle" src="{% static 'blog/images/user.png' %}"  alt="{{ comment.author }}" width="60px" height="60px">
-        <!-- Edit/delete button -->
-        <div class="flex-grow-1 ms-3 ">
-          <h5><small>{{ post.author }}</small></h5>
-          <a class="btn-sm" href="/update_post/{{ post.pk }}/" role="button">수정</a>
-          <a class="btn-sm" href="/delete_post/{{ post.pk }}/" role="button">삭제</a>
-        </div>
+      {% if user.is_authenticated and user == post.author %}
+      <div class="d-grid gap-2 d-flex justify-content-end mb-2">
+        <a class="btn btn-danger " style="color:white;" href="/delete_post/{{ post.pk }}/" role="button" aria-disabled="true">삭제</a>
+        <a class="btn btn-primary " style=" background-color:#00B4D8;border;border-color:#00B4D8;color:white;" href="/update_post/{{ post.pk }}/" role="button" aria-disabled="true">수정</a>
       </div>
+      {% endif %}
+      <h4 class="mb-4" style="font-weight:900;font-size:1.65rem;text-align:center;"><small>MIRAKLE LETTER</small></h4>
+      <hr>
+      <h4 class="mb-2 p-2" style="font-weight:500;font-size:1.75rem;text-align:left;"><small>{{ post.title }}</small></h4>
+      <h4 class="mb-4 p-2" style="font-weight:300;font-size:1.35rem;text-align:left;"><small>{{ post.hook_text }}</small></h4>
       <hr>
     </div>
-    {% endif %}
-    <div class="container" id="post-area" style="max-width:750px; padding:0;margin-bottom:30px;">
+
+    <div class="container" id="post-area" style="max-width:700px; padding:0;margin-bottom:30px;">
 
       <!-- Post Content -->
       <p class="d-flex justify-content-center">{{ post.content | safe }}</p>
