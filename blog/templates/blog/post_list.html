@@ -68,7 +68,7 @@
             {% endfor%}
           </div>
 
-          <div class="box" id="myDiv2" style="display:none;">
+          <div class="box my-3" id="myDiv2" style="display:none;">
             <div class="row">
             {% for p in post_list %}
               <div class="col-lg-4">
@@ -104,7 +104,7 @@
           </div>
           <div class="box" id="myDiv3" style="display:none;">
             {% for p in post_list %}
-                <div class="card my-5 w-100" style="height:630px;" >
+                <div class="card my-3 w-100" style="height:630px;" >
                   {% if p.head_image %}
                     <img class="card-img-top border-bottom" src="{{ p.head_image.url }}" alt="{{ p }} head image" height="330">
                   {% else %}
