@@ -1,0 +1,30 @@
+.table>:not(:first-child) {
+  border-top: 0;
+}
+body {
+    font-family : 'Noto Sans KR', sans-serif;
+}
+
+
+.img-bg{
+  background-image:url("/static/blog/images/morning.png");
+  background-position:center;
+  background-size:cover;
+
+}
+
+
+ul, li{
+    list-style:none;
+    padding-left: 0px;
+}
+
+.wide-comment {
+    height:150px;
+}
+
+.btn-sm{
+    text-decoration:none;
+    color:black;
+    padding-left:0;
+}

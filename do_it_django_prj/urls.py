@@ -19,6 +19,9 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
+handler404 = 'blog.views.error_404_view'
+handler500 = 'blog.views.error_500_view'
+
 urlpatterns = [
     path('accounts/', include('accounts.urls')),
     path('board/', include('board.urls')),

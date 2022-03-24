@@ -1,17 +1,17 @@
-from django.contrib import messages
-from django.core.paginator import Paginator
-from django.shortcuts import render, redirect
-from django.urls import reverse_lazy
+
+# django library import
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from django.utils.text import slugify
-from django.shortcuts import get_object_or_404
-from .models import Post, Category, Tag, Comment
-from django.core.exceptions import PermissionDenied
-from .forms import CommentForm, PostForm
 from django.db.models import Q
+from django.utils.text import slugify
 
-# Create your views here.
+from django.shortcuts import get_object_or_404
+from django.shortcuts import render, redirect
+from django.core.exceptions import PermissionDenied
+
+# 내부 model import
+from .models import Post, Category, Tag, Comment
+from .forms import CommentForm, PostForm
 
 
 class PostList(ListView):
@@ -112,21 +112,6 @@ class PostUpdate(LoginRequiredMixin, UpdateView):
         return response
 
 
-class PostDelete(DeleteView):
-    model = Post
-    context_object_name = 'target_post'
-    success_url = reverse_lazy('postList')
-
-    def dispatch(self, request, *args, **kwargs):
-        if request.user.is_superuser:
-            return super(PostDelete, self).dispatch(request, *args, **kwargs)
-        else:
-            raise PermissionDenied
-
-    def get(self, request, *args, **kwargs):
-        return self.post(request, *args, **kwargs)
-
-
 class CommentUpdate(LoginRequiredMixin, UpdateView):
     model = Comment
     form_class = CommentForm
@@ -157,6 +142,15 @@ class PostSearch(PostList):
         context['search_info'] = f'검색 결과: {q} ({self.get_queryset().count()})'
 
         return context
+
+
+def delete_post(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    if request.user.is_authenticated and request.user == post.author or request.user.is_superuser:
+        post.delete()
+        return redirect('/')
+    else:
+        raise PermissionDenied
 
 
 def category_page(request, slug):
@@ -221,3 +215,12 @@ def delete_comment(request, pk):
         return redirect(post.get_absolute_url())
     else:
         raise PermissionDenied
+
+
+def error_404_view(request, exception):
+    return render(request, 'error/404.html')
+
+
+def error_500_view(request):
+    return render(request, 'error/500.html')
+
