@@ -13,7 +13,7 @@
             <a class="btn btn-danger " style="color:white;" href="/delete_post/{{ post.pk }}/" data-bs-toggle="modal" data-bs-target="#deletePostModal-{{ post.pk }}" role="button" aria-disabled="true">삭제</a>
             <a class="btn btn-primary " style=" background-color:#00B4D8;border;border-color:#00B4D8;color:white;" href="/update_post/{{ post.pk }}/" role="button" aria-disabled="true">수정</a>
           </div>
-          <!-- Modal -->
+          <!-- delete post Modal -->
           <div class="modal fade" id="deletePostModal-{{ post.pk }}" tabindex="-1"
                role="dialog" aria-labelledby="deletePostModalLabel" aria-hidden="true">
               <div class="modal-dialog" role="document">
@@ -94,15 +94,16 @@
                   {% if user.is_authenticated and comment.author == user %}
                     <div class="float-end">
                       <a role="button"
-                         class="btn btn-sm btn-info"
+                         class="btn btn-info"
                          id="comment-{{ comment.pk }}-update-btn"
+                         style="background-color:#00B4D8;border;border-color:#00B4D8;color:white;"
                          href="/update_comment/{{ comment.pk }}/">
                           수정
                       </a>
                       <a role="button"
                          href="#"
                          id="comment-{{ comment.pk }}-delete-modal-btn"
-                         class="btn btn-sm btn-danger"
+                         class="btn btn-danger"
                          data-bs-toggle="modal" data-bs-target="#deleteCommentModal-{{ comment.pk }}">
                           삭제
                       </a>
