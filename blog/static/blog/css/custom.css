@@ -2,9 +2,8 @@
   border-top: 0;
 }
 body {
-    font-family : 'Noto Sans KR', sans-serif;
+    font-family: 'Noto Sans KR', sans-serif;
 }
-
 
 .img-bg{
   background-image:url("/static/blog/images/morning.png");

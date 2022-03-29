@@ -1,8 +1,8 @@
 function searchPost(){
     let searchValue = document.getElementById('search-input').value.trim();
+    var selectValue = document.getElementById('ct').value;
     if(searchValue.length > 1){
-
-        location.href="/search/" + searchValue + "/";
+        location.href="/search/" + selectValue + "/" + searchValue + "/";
 
     }
     else{

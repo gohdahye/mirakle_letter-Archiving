@@ -128,13 +128,24 @@ class PostSearch(PostList):
 
     def get_queryset(self):
         q = self.kwargs['q']
+        ct = self.kwargs['ct']
 
-        post_list = Post.objects.filter(
-            Q(title__contains=q) |
-            Q(tags__name__contains=q) |
-            Q(content__contains=q)
-        ).distinct()
-        return post_list
+        if ct != "all":
+            ct_instance = Category.objects.get(pk=ct)
+            ct_list = Post.objects.filter(category=ct_instance)
+            post_list = ct_list.filter(
+                Q(title__contains=q) |
+                Q(tags__name__contains=q) |
+                Q(content__contains=q)
+            ).distinct()
+            return post_list
+        else:
+            post_list = Post.objects.filter(
+                Q(title__contains=q) |
+                Q(tags__name__contains=q) |
+                Q(content__contains=q)
+            ).distinct()
+            return post_list
 
     def get_context_data(self, **kwargs):
         context = super(PostSearch, self).get_context_data()
