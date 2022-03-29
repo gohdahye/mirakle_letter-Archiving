@@ -3,8 +3,6 @@ from . import views
 
 urlpatterns = [
     path('search/<str:ct>/<str:q>/', views.PostSearch.as_view(), name="search"),
-    ## path('search/<str:q>/', views.PostSearch.as_view(), name="search"),
-    ##path('search/<str:q>/', views.search, name="search"),
     path('delete_comment/<int:pk>/', views.delete_comment),
     path('update_comment/<int:pk>/', views.CommentUpdate.as_view()),
     path('delete_post/<int:pk>/', views.delete_post),

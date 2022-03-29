@@ -2,10 +2,10 @@
 {% load static %}
 {% block content %}
 
-  <div class="d-flex justify-content-center" style="height:520px;background-color:#F7F7F7;" >
+  <div class="d-flex justify-content-center" style="height:320px;background-color:#F7F7F7;" >
 
     <div class="container" style="color:#323643;">
-        <div class="row mb-3 py-5">
+        <div class="row py-5">
             <div class="col-lg-9" style="font-family:'MaruBuriSemiBold';">
                 <h3 class="h3 mb-3" style="font-family:'MaruBuriBold';">"혁신하는 이들을 위한" 미라클레터입니다 📧</h3>
                 <p class="mb-3">매경미디어그룹에서  테크 트렌드, 글로벌 트렌드, 재테크 소식, 실리콘밸리 현장 소식을 빠르게 담아,<br> 주 3회 오전 6~7시에 이메일로 보내드려요!<br>미라클 모닝! 같이 시작해봐요!🏃</p>
@@ -14,42 +14,18 @@
                 </div>
             </div>
         </div>
-        <div class="row mb-3 py-3">
-            <div class="col-md-3 mb-3 position-relative">
-                <div class="input-group input-group-lg">
-                  <select class="form-select" id="ct" name="ct" aria-label="Default select example">
-                    <option value="all" selected>전체</option>
-                      {% for category in categories %}
-                        <option value="{{ category.id }}">{{ category }}</option>
-                      {% endfor %}
-                  </select>
-                </div>
-            </div>
-
-            <div class="col-md-9 position-relative">
-              <div class="input-group input-group-lg">
-                <input type="text" class="form-control"  id="search-input" name="txt"  placeholder="내용을 검색하세요."  aria-describedby="inputGroup-sizing">
-                <span class="input-group-append">
-                    <button class="btn btn-secondary" onclick="searchPost();" style="height:50px;" ><i class="fas fa-search"></i></button>
-                </span>
-              </div>
-            </div>
-
-
-        </div>
     </div>
-
 
   </div>
 
-  <div class="container py-5">
+  <div class="container" style="width:100%; margin:auto;">
 
     {% if user.is_authenticated %}
     <div class="row">
-          <div class="col-md-4 col-lg-3">
+          <div class="col-md-3 col-lg-3">
             {% include 'blog/category.html' %}
           </div>
-          <div class="col-md-8 col-lg-9" id="main-area">
+          <div class="col-md-9 col-lg-9" id="main-area">
             {% block post_area %}
             {% endblock %}
           </div>

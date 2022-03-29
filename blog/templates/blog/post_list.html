@@ -1,8 +1,7 @@
 {% extends 'blog/index.html' %}
 
   {% block post_area %}
-
-    <div class="container">
+    <div class="container" style="padding-top:30px;min-height:800px;">
       <!-- post title -->
       <div class="row ps-3">
         <div class="col">
@@ -32,19 +31,16 @@
         </div>
 
           <!-- view mode button -->
-          <div class="d-flex flex-nowrap gap-2 justify-content-end pe-4 mb-3">
+          <div class="d-flex flex-nowrap gap-2 justify-content-end pe-4">
             <a class="order-1 btn float-start bg-light" role="button" onclick="myListBtn()"><i class="fas fa-list fa-lg" ></i></a>
             <a class="order-2 btn float-start bg-light" role="button" onclick="myListBtn2()"><i class="fas fa-th-large fa-lg"></i></a>
             <a class="order-3 btn float-start bg-light" role="button" onclick="myListBtn3()"><i class="fas fa-window-maximize fa-lg"></i></a>
           </div>
-
-
-
       </div>
 
       <!-- Newsletter post -->
       {% if post_list.exists %}
-          <div class="list-group mt-3 mb-4" id="myDiv">
+          <div class="list-group mb-4" id="myDiv">
              {% for p in post_list %}
             <a href="{{ p.get_absolute_url }}" class="list-group-item border-0">
               <div class="card border-0">
@@ -168,7 +164,6 @@
     {% endif %}
 
   {% endblock %}
-
 
 
 
