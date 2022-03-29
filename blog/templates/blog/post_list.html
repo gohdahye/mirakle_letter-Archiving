@@ -30,24 +30,7 @@
 
           </h2>
         </div>
-        <div class="row g-3 mb-3">
-            <div class="col-md-3 position-relative">
-              <select class="form-select" id="ct" name="ct" aria-label="Default select example">
-                <option value="all" selected>전체</option>
-                  {% for category in categories %}
-                    <option value="{{ category.id }}">{{ category }}</option>
-                  {% endfor %}
-              </select>
-            </div>
-            <div class="col-md-9 position-relative">
-              <div class="input-group">
-                <input type="text" class="form-control"  id="search-input" name="txt"  placeholder="내용을 검색하세요."  aria-describedby="inputGroup-sizing">
-                <span class="input-group-append">
-                    <button class="btn btn-secondary" onclick="searchPost();" ><i class="fas fa-search"></i></button>
-                </span>
-              </div>
-            </div>
-        </div>
+
           <!-- view mode button -->
           <div class="d-flex flex-nowrap gap-2 justify-content-end pe-4 mb-3">
             <a class="order-1 btn float-start bg-light" role="button" onclick="myListBtn()"><i class="fas fa-list fa-lg" ></i></a>

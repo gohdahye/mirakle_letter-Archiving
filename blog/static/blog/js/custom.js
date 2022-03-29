@@ -1,7 +1,11 @@
 function searchPost(){
-    let searchValue = document.getElementById('search-input').value.trim();
+    let inputStr = document.getElementById('search-input').value.trim();
     var selectValue = document.getElementById('ct').value;
+    var regex = /\//g;
+    searchValue = inputStr.replace(regex,'');
+
     if(searchValue.length > 1){
+
         location.href="/search/" + selectValue + "/" + searchValue + "/";
 
     }
