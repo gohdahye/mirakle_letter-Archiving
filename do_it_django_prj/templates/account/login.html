@@ -1,0 +1,46 @@
+{% extends "account/base.html" %}
+
+{% load i18n %}
+{% load account socialaccount %}
+
+{% block head_title %}{% trans "Sign In" %}{% endblock %}
+
+{% block content %}
+  <div class="container my-5" style="width:28rem;">
+    <h1 class="text-center mb-3">{% trans "Sign In" %}</h1>
+
+    {% get_providers as socialaccount_providers %}
+
+    {% if socialaccount_providers %}
+    <p>{% blocktrans with site.name as site_name %}소셜 계정으로 로그인 하시거나,
+    {{ site_name }} 홈페이지 계정으로 로그인 해주세요. {% endblocktrans %}</p>
+
+    <div class="socialaccount_ballot">
+
+        <div class="login-or">
+          <ul class="socialaccount_providers">
+            {% include "socialaccount/snippets/provider_list.html" with process="login" %}
+          </ul>
+        </div>
+
+    </div>
+
+    {% include "socialaccount/snippets/login_extra.html" %}
+
+    {% else %}
+    <p>{% blocktrans %}If you have not created an account yet, then please
+    <a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
+    {% endif %}
+
+    <form class="login" method="POST" action="{% url 'account_login' %}">
+      {% csrf_token %}
+      {{ form.as_p }}
+      {% if redirect_field_value %}
+      <input class="form-group" type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+      {% endif %}
+      <a class="button secondaryAction" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
+      <a href="{{ signup_url }}">회원가입</a>
+      <button class="w-80 btn btn-md btn-primary mb-3" type="submit" style="background-color:#02145b;border;border-color:#02145b;">로그인</button>
+    </form>
+  </div>
+{% endblock %}

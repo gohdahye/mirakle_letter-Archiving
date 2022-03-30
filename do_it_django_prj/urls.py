@@ -24,11 +24,11 @@ handler404 = 'blog.views.error_404_view'
 handler500 = 'blog.views.error_500_view'
 
 urlpatterns = [
-    path('accounts/', include('accounts.urls')),
     path('board/', include('board.urls')),
     path('single/', include('single_pages.urls')),
     path('admin/', admin.site.urls),
     path('summernote/', include('django_summernote.urls')),
+    path('accounts/', include('allauth.urls')),
     path('', include('blog.urls')),
     path('robots.txt', TemplateView.as_view(template_name="robots.txt", content_type='text/plain')),
 ]
