@@ -57,6 +57,9 @@ class Post(models.Model):
 
     class Meta:
         ordering = ['-pub_date']
+        permissions = [
+            ('can_view_membership', 'Can View Membership')
+        ]
 
     def __str__(self):
         return f'[{self.pk}]{self.title} :: {self.author}'

@@ -1,7 +1,9 @@
 
 # django library import
+from django.contrib.auth.decorators import login_required
+from django.urls import reverse_lazy, reverse
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
-from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin, PermissionRequiredMixin
 from django.db.models import Q
 from django.utils.text import slugify
 
@@ -10,6 +12,8 @@ from django.shortcuts import render, redirect
 from django.core.exceptions import PermissionDenied
 
 # 내부 model import
+from django.views.generic.base import View
+
 from .models import Post, Category, Tag, Comment
 from .forms import CommentForm, PostForm
 
@@ -25,8 +29,12 @@ class PostList(ListView):
         return context
 
 
-class PostDetail(DetailView):
+class PostDetail(PermissionRequiredMixin, DetailView):
+    permission_required = 'blog.can_view_membership'
     model = Post
+
+    def handle_no_permission(self):
+        return redirect('membership_page')
 
     def get_context_data(self, **kwargs):
         context = super(PostDetail, self).get_context_data()
@@ -226,6 +234,10 @@ def delete_comment(request, pk):
         return redirect(post.get_absolute_url())
     else:
         raise PermissionDenied
+
+
+def membership_page(request):
+    return render(request, 'blog/membership.html')
 
 
 def error_404_view(request, exception):
