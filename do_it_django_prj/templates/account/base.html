@@ -7,10 +7,6 @@
 
      <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{% static 'blog/bootstrap/bootstrap.min.css' %}" type="text/css">
-    <link rel="stylesheet" href="{% static 'blog/css/custom.css' %}" type="text/css">
-
-    <!-- single_pages CSS -->
-        <link rel="stylesheet" href="{% static 'single_pages/css/landing.css' %}" type="text/css">
 
     <!-- google font -->
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
@@ -38,14 +34,17 @@
     <meta name="msapplication-TileImage" content="{% static 'blog/images/favicon/ms-icon-144x144.png' %}">
     <meta name="theme-color" content="#ffffff">
 
+    <!-- font awesome -->
+    <script src="https://kit.fontawesome.com/ff4d9f2a1e.js" crossorigin="anonymous"></script>
+
     <!-- footer fixed CSS -->
     <link rel="stylesheet" href="{% static 'single_pages/css/base_style.css' %}" type="text/css">
 
     {% block extra_head %}
     {% endblock %}
   </head>
-  <body id="page" style="min-height:650px;">
-    <div class="wrapper">
+  <body>
+    <div>
        <!-- navbar -->
       {% include 'single_pages/navbar.html' %}
 
@@ -53,17 +52,18 @@
       {% block body %}
 
         {% if messages %}
-        <div>
-          <strong>Messages:</strong>
-          <ul>
-            {% for message in messages %}
-            <li>{{message}}</li>
-            {% endfor %}
-          </ul>
+        <div class="container" style="width:70%;" >
+          <div class="alert alert-dark my-2 text-center" role="alert">
+            <ul style="list-style:none;margin:0;">
+              {% for message in messages %}
+              <li>{{message}}</li>
+              {% endfor %}
+            </ul>
+          </div>
         </div>
         {% endif %}
 
-        <div class="container">
+        <div class="container"  style="min-height:650px;">
           {% block content %}
 
           {% endblock %}
@@ -75,9 +75,18 @@
       {% block extra_body %}
       {% endblock %}
 
-      <!-- Footer -->
-      {% include 'single_pages/footer.html' %}
-
     </div>
+
+    <!-- Footer -->
+    <footer class="py-5 bg-light">
+      <div class="container" >
+          <p class="m-0 text-center">Copyright &copy; 2022 미라클레터 </p>
+          <p class="m-0 text-center text-muted">주소:서울시 중구 퇴계로 190(필동1가)&nbsp;|&nbsp;전화:02-2000-2167&nbsp;|&nbsp;이메일:miraklelab@mk.co.kr</p>
+          <div class="m-0 text-center text-muted">
+              <a class="text-muted" style="text-decoration:none; font-weight:bold;">개인정보처리방침</a>
+              <span>&nbsp;| &copy; 매경미디어그룹 매일경제. All rights reserved.</span>
+          </div>
+      </div>
+    </footer>
   </body>
 </html>

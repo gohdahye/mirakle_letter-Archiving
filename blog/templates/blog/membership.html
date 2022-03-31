@@ -1,9 +1,80 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
+
     <div class="container py-5 text-center" style="height:980px;">
         <h2>미라클레터 구독 안내 페이지</h2>
-        <p>지난 뉴스레터를 보시려면 매달 9900원으로~ 미라클레터 구독하세요!</p>
+        <p style="margin:0 0 30px 0;">지난 뉴스레터를 보시려면 매달 9900원으로~ 미라클레터 구독하세요!</p>
+
+        <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+            <div class="col">
+                <div class="card mb-4 rounded-3 shadow-sm">
+                  <div class="card-header py-3">
+                    <h4 class="my-0 fw-normal">Free</h4>
+                  </div>
+                  <div class="card-body">
+                    <h1 class="card-title pricing-card-title">₩0<small class="text-muted fw-light">/첫달 무료</small></h1>
+                    <ul class="list-unstyled mt-3 mb-4">
+                      <li>이전 미라클레터 모아 보기</li>
+                        <li>&nbsp;</li>
+                        <li>&nbsp;</li>
+                    </ul>
+                    <button type="button" class="w-100 btn btn-lg btn-outline-primary">Sign up for free</button>
+                  </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card mb-4 rounded-3 shadow-sm">
+                  <div class="card-header py-3">
+                    <h4 class="my-0 fw-normal">Pro</h4>
+                  </div>
+                  <div class="card-body">
+                    <h1 class="card-title pricing-card-title">₩9900<small class="text-muted fw-light">/1달</small></h1>
+                    <ul class="list-unstyled mt-3 mb-4">
+                        <li>댓글 기능</li>
+                        <li>이전 미라클레터 모아 보기</li>
+                        <li>&nbsp;</li>
+                    </ul>
+                    <button type="button" class="w-100 btn btn-lg btn-primary">Get started</button>
+                  </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card mb-4 rounded-3 shadow-sm border-primary">
+                  <div class="card-header py-3 text-white bg-primary border-primary">
+                    <h4 class="my-0 fw-normal">Enterprise</h4>
+                  </div>
+                  <div class="card-body">
+                    <h1 class="card-title pricing-card-title">문의 전화</h1>
+                    <ul class="list-unstyled mt-3 mb-4">
+                        <li>댓글 기능</li>
+                        <li>이전 미라클레터 모아 보기</li>
+                        <li>CES 유튜브 LIVE 방송 </li>
+                    </ul>
+                    <button type="button" class="w-100 btn btn-lg btn-primary" data-bs-toggle="modal" data-bs-target="#contactModal">Contact us</button>
+                  </div>
+                </div>
+            </div>
+        </div>
     </div>
 
+    <div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">문의 전화</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+              <p>매경미디어그룹 미라클랩</p>
+              <p>담당자 : 고다혜 </p>
+              <p>전화번호 : 02-2000-2167 </p>
+              <p>이메일 : miraklelab@mk.co.kr</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
 {% endblock %}
