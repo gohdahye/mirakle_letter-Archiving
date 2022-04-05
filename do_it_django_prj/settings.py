@@ -45,6 +45,8 @@ if os.environ.get('DJANGO_ALLOWED_HOSTS'):
 else:
     ALLOWED_HOSTS = []
 
+
+CSRF_TRUSTED_ORIGINS = ['https://mkletter.com']
 # Application definition
 
 INSTALLED_APPS = [

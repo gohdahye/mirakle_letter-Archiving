@@ -13,6 +13,8 @@ secret-key.json
 docker-compose.yml
 docker-compose.prod.yml
 nginx/
+data/
+init-letsencrypt.sh
 
 # Distribution / packaging
 .Python
