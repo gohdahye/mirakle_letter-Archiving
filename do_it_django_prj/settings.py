@@ -46,7 +46,7 @@ else:
     ALLOWED_HOSTS = []
 
 
-CSRF_TRUSTED_ORIGINS = ['https://mkletter.com']
+CSRF_TRUSTED_ORIGINS = ["https://mkletter.com", "https://www.mkletter.com"]
 # Application definition
 
 INSTALLED_APPS = [
