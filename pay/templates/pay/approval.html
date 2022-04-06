@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+  <div class="container" style="width:100%; margin:auto;">
+
+    {% if user.is_authenticated %}
+    <div class="row">
+       <h3 class="text-center">결제가 완료되었습니다!</h3>
+        <div class="col-4 p-5 bg-light">
+            <h4 class="text-center my-5">주문자 정보</h4>
+            <ul>
+                <li class="text-decoration-none">주문번호<div class="text-right">{{ res.partner_order_id }}</div></li>
+                <li class="text-decoration-none">상품명<div class="text-right">{{ res.item_name }}</div></li>
+                <li class="text-decoration-none">결제금액<div class="text-right">{{ amount }}원</div></li>
+                <li class="text-decoration-none">결제승인시각<div class="text-right">{{ res.approved_at }}</div></li>
+            </ul>
+        </div>
+    </div>
+    <!-- /.row -->
+
+    {% endif %}
+  </div>
+
+{% endblock %}
