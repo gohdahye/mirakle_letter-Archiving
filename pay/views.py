@@ -37,24 +37,5 @@ def index(request):
 
 # 승인 페이지
 def complete(request):
-    URL = 'https://kapi.kakao.com/v1/payment/approve'
-    headers = {
-        "Authorization": "KakaoAK " + "1d619e4e5edbca6428e10ae0609dd830",
-        "Content-type": "application/x-www-form-urlencoded;charset=utf-8",
-    }
-    params = {
-        "cid": "TC0ONETIME",  # 테스트용 코드
-        "tid": request.session['tid'],  # 결제 요청시 세션에 저장한 tid
-        "partner_order_id": "1001",  # 주문번호
-        "partner_user_id": "german",  # 유저 아이디
-        "pg_token": request.GET.get("pg_token"),  # 쿼리 스트링으로 받은 pg토큰
-    }
 
-    res = requests.post(URL, headers=headers, params=params)
-    amount = res.json()['amount']['total']
-    res = res.json()
-    context = {
-        'res': res,
-        'amount': amount,
-    }
-    return render(request, 'pay/approval.html', context)
+    return render(request, 'pay/complete.html')
