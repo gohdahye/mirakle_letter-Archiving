@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.humanize',
     'django_extensions',
     'import_export',
     'crispy_forms',
@@ -72,7 +73,8 @@ INSTALLED_APPS = [
     'blog',
     'single_pages',
     'board',
-    'pay'
+    'myshop',
+    'payment',
 
 ]
 
@@ -100,6 +102,9 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
+            'libraries': {
+                'staticfiles': 'django.templatetags.static',
+            }
         },
     },
 ]
@@ -149,7 +154,7 @@ USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = False
+USE_TZ = True
 
 # Static files (CSS, JavaScript, images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
@@ -193,3 +198,17 @@ SUMMERNOTE_CONFIG = {
 }
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Iamport
+PAYMENT_MERCHANT_ID = 'imp36325586'
+
+PAYMENT_REST_KEY = '6853186628494876'
+PAYMENT_REST_SECRET = '2ddf6f9ead50f59984435183f133cd738feaa3d1c0e60d7d8e964e3375f5eedc96154c6ba45a88d5'
+
+PAYMENT_MODEL = 'myshop.OrderPayment'  # Payment를 상속 받은 주문 모델
+
+PAYMENT_CONFIG = {
+    'company': '우리 회사',  # PG표기 회사명
+    'pg': 'html5_inicis',  # PG 종류 (아임포트 설정)
+    'pay_method': 'card'   # 결제 방법
+}

@@ -24,7 +24,8 @@ handler404 = 'blog.views.error_404_view'
 handler500 = 'blog.views.error_500_view'
 
 urlpatterns = [
-    path('pay/', include('pay.urls')),
+    path('payment/', include('payment.urls')),
+    path('myshop/', include('myshop.urls')),
     path('board/', include('board.urls')),
     path('single/', include('single_pages.urls')),
     path('admin/', admin.site.urls),
