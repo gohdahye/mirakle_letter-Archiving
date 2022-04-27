@@ -19,7 +19,7 @@
                         <li>&nbsp;</li>
                         <li>&nbsp;</li>
                     </ul>
-                    <button type="button" class="w-100 btn btn-lg btn-outline-primary">Sign up for free</button>
+                    <button type="button" class="w-100 btn btn-lg btn-outline-primary">무료로 가입하기</button>
                   </div>
                 </div>
             </div>
@@ -78,4 +78,32 @@
         </div>
       </div>
     </div>
+
+<div class="modal fade" id="noticeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">미라클레터 공지</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>이 사이트는 서비스 테스트 중 입니다. <br> 결제를 진행하지 마시고 유선상으로 연락 부탁드립니다.</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block script %}
+<!-- notice modal -->
+    <script>
+        var myModal = new bootstrap.Modal(document.getElementById('noticeModal'), {
+          keyboard: false
+        })
+        myModal.show()
+    </script>
 {% endblock %}

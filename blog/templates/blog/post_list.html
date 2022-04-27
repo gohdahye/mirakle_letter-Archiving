@@ -143,21 +143,21 @@
       <ul class="pagination justify-content-center py-5 mb-4">
         {% if page_obj.has_next %}
         <li class="page-item">
-          <a class="page-link" href="?page={{ page_obj.next_page_number }}">&larr; Older</a>
+          <a class="page-link" href="?page={{ page_obj.next_page_number }}">&larr; 이전</a>
         </li>
         {% else %}
         <li class="page-item disabled">
-          <a class="page-link" href="#">&larr; Older</a>
+          <a class="page-link" href="#">&larr; 이전</a>
         </li>
         {% endif %}
 
         {% if page_obj.has_previous %}
         <li class="page-item">
-          <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Newer &rarr;</a>
+          <a class="page-link" href="?page={{ page_obj.previous_page_number }}">다음 &rarr;</a>
         </li>
         {% else %}
         <li class="page-item disabled">
-          <a class="page-link" href="#">Newer &rarr;</a>
+          <a class="page-link" href="#">다음 &rarr;</a>
         </li>
         {% endif %}
       </ul>
