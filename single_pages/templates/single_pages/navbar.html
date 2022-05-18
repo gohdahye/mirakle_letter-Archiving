@@ -11,18 +11,6 @@
                 <li class="nav-item active">
                   <a class="nav-link" href="/"></a>
                 </li>
-                {% if request.user.is_authenticated %}
-                <li class="nav-item">
-                  <a class="nav-link" href=""></a>
-                </li>
-                {% else %}
-                <li class="nav-item">
-                  <a class="nav-link" href=""></a>
-                </li>
-                {% endif %}
-                <li class="nav-item">
-                  <a class="nav-link" href="/accounts/login/"></a>
-                </li>
               </ul>
               <ul class="navbar-nav">
                 {% if user.is_authenticated %}
@@ -64,7 +52,7 @@
       <div class="modal-body">
           <div class="container-fluid">
               <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-6 mb-2">
                     <a role="button" class="mb-2 btn btn-outline-dark btn-block" href="{% provider_login_url 'google' %}"><i class="fab fa-google"></i>&nbsp&nbsp Log in with Google</a>
                     <a role="button" class="btn btn-outline-dark btn-block" href="/accounts/login/"><i class="far fa-envelope"></i>&nbsp&nbsp Log in with E-mail</a>
                 </div>

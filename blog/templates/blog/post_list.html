@@ -102,37 +102,7 @@
             </div>
 
           </div>
-          <div class="box" id="myDiv3" style="display:none;">
-            {% for p in post_list %}
-                <div class="card my-3 w-100" style="height:630px;" >
-                  {% if p.head_image %}
-                    <img class="card-img-top border-bottom" src="{{ p.head_image.url }}" alt="{{ p }} head image" height="330">
-                  {% else %}
-                    <img class="card-img-top border-bottom" src="https://picsum.photos/seed/{{ p.id }}" alt="random_image" height="200">
-                  {% endif %}
-                  <!-- card body -->
-                  <div class="card-body" >
-                    <h6 class="card-title" style="font-weight:bold;">{{ p.title | truncatechars:40 }}</h6>
-                    {% if p.hook_text %}
-                      <p class="card-text" style="height:75px;">{{ p.hook_text }}</p>
-                    {% endif %}
-                    <!-- category -->
-                    {% if p.tags.exists %}
-                    <i class="fas fa-tags"></i>
-                    {% for tag in p.tags.iterator %}
-                      <a class="text-decoration-none" href="{{ tag.get_absolute_url }}"><span class="badge bg-secondary me-1">{{ tag }}</span></a>
-                    {% endfor %}
-                    {% endif %}
-                    <br>
-                    <br>
-                    <a href="{{ p.get_absolute_url }}" class="btn btn-primary mb-3 float-start" style="background-color:#112D4E;border;border-color:#112D4E;">더보기 &rarr;</a>
-                  </div>
-                  <div class="card-footer">
-                    <small class="text-muted">{{ p.pub_date | date:"Y년 m월 d일" }}</small>
-                  </div>
-                </div>
-            {% endfor%}
-          </div>
+
       {% else %}
         <div class="container" style="height:600px;"><h3>아직 게시물이 없습니다.</h3></div>
       {% endif %}

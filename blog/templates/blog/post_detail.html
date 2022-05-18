@@ -1,9 +1,13 @@
 {% extends 'blog/index.html' %}
+{% load i18n %}
 {% load static %}
 {% load crispy_forms_tags %}
+
 {% block head_title %}
   {{ post.title }} - Blog
 {% endblock %}
+
+
 
   {% block content %}
 
@@ -34,11 +38,7 @@
               </div>
           </div>
       {% endif %}
-      <h4 class="mb-4" style="font-weight:900;font-size:1.65rem;text-align:center;"><small>MIRAKLE LETTER</small></h4>
-      <hr>
-      <h4 class="mb-2 p-2" style="font-weight:500;font-size:1.75rem;text-align:left;"><small>{{ post.title }}</small></h4>
-      <h4 class="mb-4 p-2" style="font-weight:300;font-size:1.35rem;text-align:left;"><small>{{ post.hook_text }}</small></h4>
-      <hr>
+
     </div>
 
     <div class="container" id="post-area" style="max-width:700px; padding:0;margin-bottom:30px;">
@@ -129,11 +129,11 @@
                     </div>
                   {% endif %}
                   <h5 class="mt-0">{{ comment.author.username }} &nbsp;&nbsp;
-                    <small class="text-muted">{{ comment.created_at }}</small>
+                    <small class="h6 text-muted">{% blocktrans with param=comment.created_at|timesince %} {{ param }} {% endblocktrans %}</small>
                   </h5>
                     <p>{{ comment.content | linebreaks }}</p>
                     {% if comment.created_at != comment.modified_at %}
-                      <p class="text-muted float-end"><small>작성 일시: {{ comment.modified_at }}</small></p>
+                      <p class="text-muted float-end"><small>Updated : {{ comment.modified_at }}</small></p>
                     {% endif %}
                 </div>
               </div>

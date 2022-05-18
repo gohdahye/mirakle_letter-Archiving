@@ -84,6 +84,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
 ]
 
 ROOT_URLCONF = 'do_it_django_prj.urls'
@@ -144,7 +145,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
-LANGUAGE_CODE = 'ko-kr'
+LANGUAGE_CODE = 'ko'
 
 TIME_ZONE = 'Asia/Seoul'
 
@@ -153,6 +154,10 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+LOCALE_PATHS = (
+    os.path.join(BASE_DIR, 'locale'),
+)
 
 # Static files (CSS, JavaScript, images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
