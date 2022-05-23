@@ -1,7 +1,7 @@
-{% load i18n %}{% autoescape off %}{% blocktrans with site_name=current_site.name %}Hello from {{ site_name }}!{% endblocktrans %}
+{% load i18n %}{% autoescape off %}{% blocktrans with site_name=current_site.name %}안녕하세요! {{ site_name }}입니다.{% endblocktrans %}
 
 {% block content %}{% endblock %}
 
-{% blocktrans with site_name=current_site.name site_domain=current_site.domain %}Thank you for using {{ site_name }}!
-{{ site_domain }}{% endblocktrans %}
+{% filter slugify %}{% blocktrans with site_name=current_site.name site_domain=current_site.domain %}{{ site_name }}를 애독해주셔서 감사합니다!
+{% endblocktrans %}{% endfilter %}
 {% endautoescape %}

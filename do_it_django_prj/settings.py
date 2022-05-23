@@ -155,9 +155,6 @@ USE_L10N = True
 
 USE_TZ = True
 
-LOCALE_PATHS = (
-    os.path.join(BASE_DIR, 'locale'),
-)
 
 # Static files (CSS, JavaScript, images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
@@ -202,3 +199,21 @@ SUMMERNOTE_CONFIG = {
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# 이메일 환경설정
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = "smtp.gmail.com"
+
+# gmail 통신 포트
+EMAIL_PORT = '587'
+EMAIL_USE_TLS = True
+
+# 발신할 이메일
+# EMAIL_HOST_USER = '구글아이디@gmail.com'
+EMAIL_HOST_USER = get_secret("EMAIL_HOST_USER")
+
+# 발신할 비밀번호
+# EMAIL_HOST_PASSWORD = '구글 2차 앱 비밀번호'
+EMAIL_HOST_PASSWORD = get_secret("EMAIL_HOST_PASSWORD")
+
+# 사이트와 관련한 자동응답 받을 이메일 주소
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
