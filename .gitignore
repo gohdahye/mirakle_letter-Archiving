@@ -144,3 +144,4 @@ migrations/
 _media/
 
 #env.prod file
+.env.prod
