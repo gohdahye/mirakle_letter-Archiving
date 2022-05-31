@@ -145,3 +145,4 @@ _media/
 
 #env.prod file
 .env.prod
+file delete
