@@ -11,9 +11,9 @@
 
   {% block content %}
 
-    <div class="container my-5">
+    <div class="container py-2" style="max-width:600px;">
       {% if user.is_authenticated and user == post.author %}
-          <div class="d-grid gap-2 d-flex justify-content-end mb-2">
+          <div class="d-grid gap-2 d-flex justify-content-end" >
             <a class="btn btn-danger " style="color:white;" href="/delete_post/{{ post.pk }}/" data-bs-toggle="modal" data-bs-target="#deletePostModal-{{ post.pk }}" role="button" aria-disabled="true">삭제</a>
             <a class="btn btn-primary " style=" background-color:#00B4D8;border;border-color:#00B4D8;color:white;" href="/update_post/{{ post.pk }}/" role="button" aria-disabled="true">수정</a>
           </div>
@@ -41,7 +41,7 @@
 
     </div>
 
-    <div class="container" id="post-area" style="max-width:700px; padding:0;margin-bottom:30px;">
+    <div class="container" id="post-area" style="max-width:700px; padding:0px; margin-bottom:12px;">
 
       <!-- Post Content -->
       <p class="d-flex justify-content-center">{{ post.content | safe }}</p>
