@@ -45,7 +45,7 @@
             <div class="row">
             {% for p in post_list %}
               <div class="col-lg-4">
-                <div class="card mb-3" style="height:370px;width:18rem;" >
+                <div class="card mb-3" style="height:370px;" >
                   {% if p.head_image %}
                     <a href="{{ p.get_absolute_url }}">
                       <img class="card-img-top border-bottom" src="{{ p.head_image.url }}" alt="{{ p }} head image" height="200">
