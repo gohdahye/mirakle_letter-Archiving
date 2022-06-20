@@ -7,14 +7,11 @@ html,body{
 .wrapper{
     height:auto;
     min-height:100%;
-    padding-bottom:230px;
+    padding-bottom:160px;
 }
 
 footer {
-    height:230px;
-    position:relative;
-    transform:translateY(-100%);
-    padding:15px;
+    height:160px;
 }
 
 .card{
