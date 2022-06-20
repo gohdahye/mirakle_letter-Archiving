@@ -45,18 +45,19 @@
             <div class="row">
             {% for p in post_list %}
               <div class="col-lg-4">
-                <div class="card mb-3"  style="height:460px;width:18rem;" >
+                <div class="card mb-3" style="height:370px;width:18rem;" >
                   {% if p.head_image %}
-                    <img class="card-img-top border-bottom" src="{{ p.head_image.url }}" alt="{{ p }} head image" height="200">
+                    <a href="{{ p.get_absolute_url }}">
+                      <img class="card-img-top border-bottom" src="{{ p.head_image.url }}" alt="{{ p }} head image" height="200">
+                    </a>
                   {% else %}
-                    <img class="card-img-top border-bottom" src="https://picsum.photos/seed/{{ p.id }}" alt="random_image" height="200">
+                    <a href="{{ p.get_absolute_url }}">
+                      <img class="card-img-top border-bottom" src="https://picsum.photos/seed/{{ p.id }}" alt="random_image" height="200">
+                    </a>
                   {% endif %}
                   <!-- card body -->
                   <div class="card-body" >
-                    <h6 class="card-title" style="font-weight:bold;">{{ p.title | truncatechars:20 }}</h6>
-                    {% if p.hook_text %}
-                      <p class="card-text" style="height:75px;">{{ p.hook_text | truncatechars:56 }}</p>
-                    {% endif %}
+                    <h6 class="card-title" style="font-weight:bold;height:45px;">{{ p.title | truncatechars:25 }}</h6>
                     <!-- category -->
                     {% if p.tags.exists %}
                     <i class="fas fa-tags"></i>
@@ -64,7 +65,7 @@
                         <a class="text-decoration-none" href="{{ tag.get_absolute_url }}"><span class="badge bg-secondary me-1">{{ tag }}</span></a>
                       {% endfor %}
                     {% endif %}
-                    <a href="{{ p.get_absolute_url }}" class="btn btn-primary mb-3" style="background-color:#112D4E;border;border-color:#112D4E;position:absolute;top:365px;right:20px;">더보기 &rarr;</a>
+
                   </div>
                   <div class="card-footer">
                     <small class="text-muted">{{ p.pub_date | date:"Y년 m월 d일" }}</small>
